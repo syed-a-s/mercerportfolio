@@ -1,0 +1,41 @@
+     1                                  ; Console Output
+     2                                  ; Materials - NASM (32-bit)
+     3                                  ; Copyright (c) 2017 Hall & Slonka
+     4                                  
+     5                                  ; Uses system call information from Chapter 10
+     6                                  
+     7                                  SECTION .data
+     8 00000000 48656C6C6F20556E69-     s1: DB "Hello Universe", 10
+     9 00000009 76657273650A       
+    10                                  lenS1: EQU ($ - s1)
+    11                                  
+    12 0000000F 0A                      cr: db 0ah
+    13 00000010 00000000                saveECX: dd 0
+    14                                  
+    15                                  SECTION .text
+    16                                  global _main
+    17                                  _main:
+    18                                  
+    19                                  ;;; Loop 10 times to print the message 10 times
+    20 00000000 B90A000000              	mov ecx,10
+    21                                  top:
+    22 00000005 890D[10000000]          	mov [saveECX], ecx
+    23                                  
+    24                                  print:  ;mov eax, 4     ; syswrite
+    25                                  	;mov ebx, 1     ; stdout
+    26                                  	;mov ecx, s1    ; starting address of string
+    27                                  	;mov edx, lenS1 ; len of string
+    28                                  	;int 80h        ; interrupt 80 hex
+    29                                  
+    30                                  	;mov ecx, [saveECX]
+    31                                  	;loop top
+    32                                  
+    33 0000000B B804000000                      mov eax, 4     ; syswrite
+    34 00000010 BB01000000              	mov ebx, 1     ; stdout
+    35 00000015 B9[0F000000]            	mov ecx, cr    ; starting address of string
+    36 0000001A BA01000000              	mov edx, 1     ; len of string
+    37 0000001F CD80                    	int 80h
+    38                                  done:	
+    39 00000021 B801000000              mov eax, 1
+    40 00000026 BB00000000              mov ebx, 0
+    41 0000002B CD80                    int 80h

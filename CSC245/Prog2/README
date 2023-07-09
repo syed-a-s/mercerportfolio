@@ -1,0 +1,90 @@
+Author : Saadat Syed
+Proj   : The Postfix Desk Calculator
+Date   : 3-9-21
+
+
+
+      Goal
+      
+            - The program needs to be able solve simple arithmetic equations using the postfix method.
+
+      Input and Output
+      
+            - There will be a constant stream of user input
+            - The user can enter any number wanted with spaces in between each number
+            - The user can enter operators for the operands
+            - The user can enter different commands : p, n, ,f ,c ,d , and r
+            
+      Classes used
+      
+            - Stack class : LIFO database that can be used to store the operands and operators entered
+                            by the user.
+            - cctype      : This class can check the state of a string and also modify a string. This 
+                            was very helpful for parsing the user input and then pushing onto the stack.
+            - cstring     : This class can compare strings and manipulate them too. This was also helpful
+                            for parsing the user input.
+            - cstlib      : This class has many general purposes. This was used to convert strings into 
+                            integers which was helpful in performing the arithmetic equations.
+            - std         : This class is used for many of the basic functions. Ex :  cout 
+            
+            - iostream    : This class was needed to perform to gather and give all outputs and inputs.
+            
+            - sstream     : This class is used for streaming strings. For this project, it was useful 
+                            for turning integers into strings
+                            
+      Algorithm
+      
+            Run the program while there is still user input
+            
+                  When the input is entered, check it letter by letter
+                  
+                        if it's a digit then push that onto the stack
+                        
+                        if it's a command then process the command
+                        
+                              p - print the item at the top of the stack
+                              
+                              n - print the top AND delete the top
+                              
+                              f - print the stack
+                                    
+                                      To print the stack
+                                      
+                                      if it's empty
+                                            
+                                            don't do anything
+                                            
+                                      if not, have a string equal the top and then pop it
+                                      
+                                      print the string, but recursively the function again
+                                      
+                                      Finally, push the string onto the stack
+                                
+                              c - clear the stack
+                              
+                              d - Duplicate the top
+                                  
+                                  Make a string equal the string at the top of the stack, then 
+                                  push the new string into the stack
+                                  
+                              r - swap the first two values on the stack
+                              
+                                  Have the FIRST value equal the top value, then pop the stack
+                                  Have the SECOND value equal the next top value, then pop the stack
+                                  Push the FIRST value in, and then the SECOND value
+                                  
+                        if it's an operator
+                        
+                              For all the different operators ( +, -, *, /, & ), top and pop the first value
+                              in the stack (let's call this FIRST). Then, top and pop the next value in the 
+                              stack (and let's call this SECOND)
+                              
+                              For ALL operators, the equation is :
+                              
+                                    SECOND operator FIRST = answer
+                                    
+                              Then push the answer onto the stack                                    
+                                    
+                                     
+                              
+                        

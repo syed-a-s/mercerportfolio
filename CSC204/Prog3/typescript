@@ -1,0 +1,180 @@
+Script started on Mon 13 Jul 2020 08:49:38 PM EDT
+]0;saadat_sa@cobra:~/Prog3[?1034h[saadat_sa@cobra Prog3]$ [K[saadat_sa@cobra Prog3]$ cat -n C[K<y[K[KMY[Kyt[KConvertDate.java[K[saadat_sa@cobra Prog3]$ cat -n MyConvertDate.java[7Pjava MyConvertDatecat -n MyConvertDate.java
+     1	// Name : Syed Saadat
+     2	// Title : ConvertDate (Project 3)
+     3	
+     4	import java.util.*;
+     5	
+     6	public class MyConvertDate
+     7	{
+     8	      public static void main (String[] args)
+     9	      {  
+    10	        // All the Variables 
+    11	        
+    12	        String day, year, month, date; // The String Date
+    13	        int J;                             // The century
+    14	        int K;                             // Year within century
+    15	        int m;                             // Month
+    16	        int date2;                         // Day in month 
+    17	        int h;                             // The variable for the day in the week
+    18	        int year2;
+    19	        
+    20	        // Getting Initial value
+    21	        
+    22	        Scanner scan = new Scanner(System.in);
+    23	        System.out.print("\nEnter date to be converted (month day, year) : ");
+    24	        date = scan.nextLine();
+    25	        
+    26	        // Pulling off year, date, and month
+    27	        
+    28	        year = date.substring(date.length() - 4, date.length());
+    29	        year2 = Integer.parseInt(year);
+    30	        
+    31	        int endIndex = date.indexOf(",");
+    32	        int startIndex = date.lastIndexOf(" ", endIndex);
+    33	        day = date.substring(startIndex + 1, endIndex);
+    34	        date2 = Integer.parseInt(day);
+    35	        
+    36	        month = date.substring(0, date.indexOf(" "));
+    37	        month = month.trim();
+    38	
+    39	        // Converting month to a number 
+    40	        
+    41	        m = -1;
+    42	        
+    43	        if(month.equalsIgnoreCase("january")){
+    44	           
+    45	            m = 1;
+    46	                
+    47	        } else if(month.equalsIgnoreCase("february")){
+    48	            
+    49	            m = 2;                                          
+    50	
+    51	        } else if(month.equalsIgnoreCase("march")){
+    52	            
+    53	            m = 3;
+    54	         
+    55	        } else if(month.equalsIgnoreCase("april")){
+    56	        
+    57	            m = 4;
+    58	        
+    59	        } else if(month.equalsIgnoreCase("may")){
+    60	            
+    61	            m = 5;
+    62	
+    63	        } else if(month.equalsIgnoreCase("june")){
+    64	            
+    65	            m = 6;
+    66	        
+    67	        } else if(month.equalsIgnoreCase("july")){
+    68	            
+    69	            m = 7;
+    70	
+    71	        } else if(month.equalsIgnoreCase("august")){
+    72	            
+    73	            m = 8;
+    74	
+    75	        } else if(month.equalsIgnoreCase("september")){
+    76	            
+    77	            m = 9;
+    78	            
+    79	        } else if(month.equalsIgnoreCase("october")){
+    80	            
+    81	            m = 10;
+    82	        
+    83	        } else if(month.equalsIgnoreCase("november")){
+    84	            
+    85	            m = 11;
+    86	
+    87	        } else if(month.equalsIgnoreCase("december")){
+    88	            
+    89	            m = 12;
+    90	        }
+    91	
+    92	    
+    93	        // Finding J & K
+    94	        
+    95	        J = year2 / 100;
+    96	        K = year2 % 100;
+    97	        
+    98	        // Calculating the day of the week
+    99	        
+   100	        if( m == 1){
+   101	            m = 13;
+   102	            K--;
+   103	            if(K == -1){
+   104	                 K = 99;
+   105	                 J--;}
+   106	         } else if(m == 2){
+   107	             m = 14;
+   108	             K--; 
+   109	             if(K == -1){
+   110	                 K = 99;
+   111	                 J--;}
+   112	         }
+   113	         
+   114	         h = -1;
+   115	         h = ((date2 + (((m + 1) * 26) / 10) + K + (K / 4) + (J / 4)) + (5 * J)) % 7;
+   116	        
+   117	        // Assigning Number to Day of Week
+   118	        
+   119	        String dayInWeek = " ";
+   120	        if(h == 0){
+   121	          dayInWeek = "Saturday";
+   122	        } else if(h == 1){
+   123	          dayInWeek = "Sunday";
+   124	        } else if(h == 2){
+   125	          dayInWeek = "Monday";
+   126	        } else if(h == 3){
+   127	          dayInWeek = "Tuesday";
+   128	        } else if(h == 4){
+   129	          dayInWeek = "Wednesday";
+   130	        } else if(h == 5){
+   131	          dayInWeek = "Thursday";
+   132	        } else if(h == 6){
+   133	          dayInWeek = "Friday";
+   134	        } 
+   135	        
+   136	        // Printing Results
+   137	        
+   138	        System.out.println("\nConverted Date: " + dayInWeek + ", " + month.substring(0,1).toUpperCase() + 
+   139	        month.substring(1) + " " + date2 +", " + year2 + "\n");
+   140	
+   141	      }
+   142	}
+   143	        
+   144	        ]0;saadat_sa@cobra:~/Prog3[saadat_sa@cobra Prog3]$ [K[saadat_sa@cobra Prog3]$ javac MyConvertDate,[K.java
+]0;saadat_sa@cobra:~/Prog3[saadat_sa@cobra Prog3]$ kava[K[K[K[Kjava MyConvertDate
+
+Enter date to be converted (month day, year) : APROL^?^?IL        i IL 12, 1997 8
+
+Converted Date: Sunday, APRIL 12, 1998
+
+]0;saadat_sa@cobra:~/Prog3[saadat_sa@cobra Prog3]$ java MyConvertDate
+
+Enter date to be converted (month day, year) : ocTOber 1, 2006 7
+
+Converted Date: Monday, OcTOber 1, 2007
+
+]0;saadat_sa@cobra:~/Prog3[saadat_sa@cobra Prog3]$ java MyConvertDate
+
+Enter date to be converted (month day, year) : Ji  jULY 16,2  2013
+
+Converted Date: Tuesday, JULY 16, 2013
+
+]0;saadat_sa@cobra:~/Prog3[saadat_sa@cobra Prog3]$ java MyConvertDate
+
+Enter date to be converted (month day, year) : jULY 4, 2020
+
+Converted Date: Saturday, JULY 4, 2020
+
+]0;saadat_sa@cobra:~/Prog3[saadat_sa@cobra Prog3]$ java MyConvertDate
+
+Enter date to be converted (month day, year) : sEPtember 17, 2020  19
+
+Converted Date: Tuesday, SEPtember 17, 2019
+
+]0;saadat_sa@cobra:~/Prog3[saadat_sa@cobra Prog3]$ exit
+exit
+
+Script done on Mon 13 Jul 2020 08:52:01 PM EDT

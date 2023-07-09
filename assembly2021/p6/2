@@ -1,0 +1,50 @@
+ROWS: EQU 3
+COLS: EQU 2
+
+SECTION .data
+MyMatrix: dw 1, 2
+          dw 4, -2
+          dw -10, 8
+
+saveECX: dw 0
+saveTopCol: dd 0
+
+SECTION .bss
+RowSums: RESW ROWS
+ColSums: RESW COLS
+Sum:     RESW 1
+
+SECTION .text
+global _main
+_main:
+
+mov edx, ColSums
+xor ebx, ebx
+mov eax, MyMatrix
+mov ecx, COLS
+outer:
+	mov [saveECX], ecx
+	mov ecx, ROWS
+	
+	inner:
+		mov ax, [eax+ebx]
+		add ebx, 2*COLS
+		add [edx], ax
+		loop inner
+
+	add eax, 2
+	mov ebx, 0
+	add edx, 2
+	mov ecx, [saveECX]
+	loop outer
+
+
+
+
+
+
+
+; standard termination
+mov eax, 1
+mov ebx, 0
+int 80h

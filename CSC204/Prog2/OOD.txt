@@ -1,0 +1,39 @@
+Syed Saadat
+Project 2
+
+
+		Software Development Method for Proj 2
+
+a.) A clerk needs to calculate the amount of change for a purchase to give to the customer. The clerk also needs to indicate how many
+    hundreds, fifties, twenties, tens, fives and ones are needed to best return the change. 
+
+b.) There will be two inputs: the total amount due and the money recieved from the customer. Then it will output the best types 
+    of dollar bills needed to reach the difference between the two inputs.
+
+c.)                   Algorithm for Change Project
+
+    1.) input amount due as double 
+        input amount tendered as double 
+        
+    2.) Calculate the change due in dollars
+    
+                Change due = Amount Tendered - Amount Due 
+          ex.
+                Change Due = 100 - 21 = $79
+                
+          Do not accept the amount tendered if it is less than the amount due. Then prompt to ask again for more $.
+                
+    3.) Convert Change Due Into 100s, 50s, 20s, 10s, 5s, 1s 
+    
+                      79 / 100 = 0 <---- # 100s
+                      79 % 100 = 79 <---- change left
+                      change left / 50 = 1 <---- # 50s
+                      change left % 50 = 29 <---- change left
+                      29 / 20 = 1 <---- # 20s
+                      29 % 20 = 9 <---- 9 <---- change left
+                      9 / 10 = 0 <---- # 10s
+                      9 % 10 = 9 <---- change left
+                      9 / 5 = 1 <---- # 5s
+                      9 % 5 = 4 <---- # 1s
+    
+    4.) Print out results

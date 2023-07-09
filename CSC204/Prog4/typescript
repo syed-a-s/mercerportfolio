@@ -1,0 +1,76 @@
+Script started on Thu 23 Jul 2020 11:44:43 PM EDT
+]0;saadat_sa@cobra:~/Prog4[?1034h[saadat_sa@cobra Prog4]$ javac Crupt[K[Ku[K[Ky[[Kpt.java
+]0;saadat_sa@cobra:~/Prog4[saadat_sa@cobra Prog4]$ java Ct[Krupt[K[Ku[K[Kypr[Kt
+		======================================	
+			TEXT FILE SECURITY SYSETM		
+		======================================	
+		Enter Your Password ==> add   sas
+
+		Source File ==> infile.dat
+
+		Encrypt or Decrypt? (E/D) E
+
+		Output File ==> out.enc
+			   Lines processed :  17
+			Characters crypted :  347
+
+		Another File? (Y/N) Y
+		======================================	
+			TEXT FILE SECURITY SYSETM		
+		======================================	
+		Enter Your Password ==> sas
+
+		Source File ==> out.enc
+
+		Encrypt or Decrypt? (E/D) D
+
+		Output File ==> out.dec
+			   Lines processed :  17
+			Characters crypted :  347
+
+		Another File? (Y/N) N
+
+		!!! Exiting Security System !!!
+
+]0;saadat_sa@cobra:~/Prog4[saadat_sa@cobra Prog4]$ [K[saadat_sa@cobra Prog4]$ cat out.enc
+
+
+LLLLLLLLLLLLLLLLLGGG{lz{GGLLLLLLLLLLLLLLLLLLLL
+
+o-447G~7:4,H
+
+{01;G.14-G1;G<7G*-G-6+:A8<-,G*AG5AG8:7/:)5S
+)6,G<0-6G,-+:A8<-,G*)+3G)/)16G<7G1<;G7:1/16)4
++76<-6<U
+
+{01;G1;G5AG.1:;<G-6+:A8<176G8:7/:)5U
+pG078-G1<G?7:3;HGGaTP
+
+s-<N;G<:AG<0-GB77G416-G.:75G<0-Gw:72-+<G;0--<
+~0-6G<0-GB773--8-:G.14-,G*)63:=8<+AG16GX`]`SG<0-G-6<1:-G+755=61<AGGUUUU
+
+JG{olGlukGvmGmpslGJG
+]0;saadat_sa@cobra:~/Prog4[saadat_sa@cobra Prog4]$ out.ded[Kc
+bash: out.dec: command not found...
+]0;saadat_sa@cobra:~/Prog4[saadat_sa@cobra Prog4]$ cat out.dec
+
+
+%%%%%%%%%%%%%%%%%   TEST  %%%%%%%%%%%%%%%%%%%%
+
+Hello World!
+
+This file is to be encrypted by my program,
+and then decrypted back again to its original
+content.
+
+This is my first encryption program.
+I hope it works!  :-)
+
+Let's try the zoo line from the Project sheet
+When the zookeeper filed bankruptcy in 1969, the entire community  ....
+
+# THE END OF FILE # 
+]0;saadat_sa@cobra:~/Prog4[saadat_sa@cobra Prog4]$ exit
+exit
+
+Script done on Thu 23 Jul 2020 11:46:59 PM EDT

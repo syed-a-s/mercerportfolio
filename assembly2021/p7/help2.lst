@@ -1,0 +1,40 @@
+     1                                  SECTION .data
+     2 00000000 0A                      cr: db 0ah  ;;; carriage return character ;;; presses enter, prints new line
+     3 00000001 00000000                saveEcxOuter : dd 0 ; save outer loop iteration
+     4 00000005 00000000                saveEcxInner : dd 0 ; save inner loop iteration
+     5 00000009 78                      in : db "x"
+     6                                  
+     7                                  SECTION .text
+     8                                  global _main
+     9                                  _main: 	
+    10                                  
+    11 00000000 B904000000              mov ecx, 4 ; outer loop 'outerLoops' times
+    12                                  outer:
+    13 00000005 890D[01000000]          	mov [saveEcxOuter], ecx
+    14 0000000B B90A000000              	mov ecx, 10 ; inner loop 'innerLoops' times
+    15                                  	inner:
+    16 00000010 890D[05000000]          		mov [saveEcxInner], ecx
+    17                                  		; print current pointer to surprise
+    18 00000016 B804000000              		mov eax, 4 ; syswrite
+    19 0000001B BB01000000              		mov ebx, 1 ; stdout
+    20 00000020 B9[09000000]            		mov ecx, in ; starting address of string
+    21 00000025 BA01000000              		mov edx, 1 ; length of string (only want one byte)
+    22 0000002A CD80                    		int 80h ; interrupt 80 hex
+    23                                  
+    24                                  		; go back to inner
+    25 0000002C 8B0D[05000000]          		mov ecx, [saveEcxInner]
+    26 00000032 E2DC                    		loop inner
+    27                                  	; printing carriage return before next row
+    28 00000034 B804000000              	mov eax, 4
+    29 00000039 BB01000000              	mov ebx, 1
+    30 0000003E B9[00000000]            	mov ecx, cr
+    31 00000043 BA01000000              	mov edx, 1
+    32 00000048 CD80                    	int 80h
+    33                                  	
+    34                                  	; go back to outer
+    35 0000004A 8B0D[01000000]          	mov ecx, [saveEcxOuter]
+    36 00000050 E2B3                    	loop outer
+    37                                  
+    38 00000052 B801000000              mov eax, 1
+    39 00000057 BB00000000              mov ebx, 0
+    40 0000005C CD80                    int 80h

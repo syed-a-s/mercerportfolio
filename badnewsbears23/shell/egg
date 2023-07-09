@@ -1,0 +1,146 @@
+#!/bin/bash
+
+# Syed Saadat
+# CSC 460
+# 1-25-23
+# The EGG SHELL
+
+cmd='yes'
+
+ShowUser() {
+	# get everyone on assemble
+	everyone=`cat /etc/passwd | cut -d":" -f1`
+
+	# compare command line userid with userids on assemble 
+	for user in $everyone; do
+		# if it exists, update name and phone
+		if [ "$user" == "$1" ]; then
+			full_name=`grep $user /etc/passwd | cut -d":" -f5 | cut -d"," -f1`
+			office_phone=`grep $user /etc/passwd | cut -d":" -f5 | cut -d"," -f3`
+			msg="Name : ${full_name} Phone : ${office_phone}"
+			break
+		# else let user know userid does not exist
+		else
+			msg="$1 is an egghead somewhere else"
+		fi
+	done
+
+	echo $msg
+}
+
+ShowLoggedOn() {
+	# get whos logged on and remove multiple instances of one person
+	logged_on=`who | cut -d" " -f1 | sort -u`
+	
+	echo "Current Eggers Logged On"
+
+	for user in $logged_on; do
+		#ignore root
+		if [ "$user" == "root" ]; then
+			continue
+		fi
+
+		# grep fullname by users logged on
+		full_name=`grep $user /etc/passwd | cut -d":" -f5 | cut -d"," -f1`
+		
+		echo $full_name
+	done
+}
+
+ShowHelpMenu() {
+	echo -e '\t' "eggshow filename : show contents of specified file"
+	echo -e '\t' "egghead userid   : show full name and office phone of specified userid"
+	echo -e '\t' "eggers           : show full names of eggheads logged on"
+	echo -e '\t' "eggcrate         : show files in current directory"
+	echo -e '\t' "deviled          : does something devilish"
+	echo -e '\t' "custard filename : my "favorite" editor opens filename"
+	echo -e '\t' "snoopy           : snoop on other eggheads"
+	echo -e '\t' "clear            : clear screen"
+	echo -e '\t' "eggdrop          : exit the egg shell"
+}
+
+DevilActivities() {
+	egg="0"
+
+	echo "Hey, can you watch my egg pls?"
+	echo $egg
+
+	sleep 3
+	echo "I'll be back"
+
+	sleep 3
+	clear
+
+	echo $egg
+	sleep 5
+
+	# simulate falling
+	for i in {0..10}; do
+		sleep 1
+		clear
+
+		for j in $(seq 0 $i); do
+			echo
+		done
+	
+		if [ $i -eq 10 ]; then 
+			egg="___"	
+		fi
+
+		echo $egg
+	done
+	
+	sleep 7
+	echo "Preciate you for watching my egg. Where's it at?"
+	sleep 3
+}
+
+# do while loop
+while true; do 
+	echo -n "egg> "
+	read cmd
+
+	arg_1=`echo $cmd | cut -d" " -f1`
+	arg_2=`echo $cmd | cut -d" " -f2`
+
+	# eggdrop - exit command
+	if [ "$arg_1" == "eggdrop" ]; then
+		break
+	fi
+
+	# eggshow - show specific file
+	if [ "$arg_1" == "eggshow" ]; then 	
+		more $arg_2
+	# egghead - show specific user id
+	elif [ "$arg_1" == "egghead" ]; then
+		ShowUser $arg_2
+	# eggers - show full name of those logged on
+  	elif [ "$arg_1" == "eggers" ]; then
+		ShowLoggedOn
+	# eggcrate - ls command
+  	elif [ "$arg_1" == "eggcrate" ]; then 
+    		ls
+	# egghelp - show most commands
+	elif [ "$arg_1" == "egghelp" ]; then
+		ShowHelpMenu
+	# ostrich - run bash 
+	elif [ "$arg_1" == "ostrich" ]; then
+		bash
+	# deviled - do something devilish
+	elif [ "$arg_1" == "deviled" ]; then
+		DevilActivities
+	# custard - open file with my 'favorite' text editor
+	elif [ "$arg_1" == "custard" ]; then
+		vim $arg_2
+	# snoopy - run snoopy bash script
+	elif [ "$arg_1" == "snoopy" ]; then
+		$cmd
+	# clear - clear screen
+	elif [ "$arg_1" == "clear" ]; then
+		clear
+	else
+		echo "Egghead's can't do that"
+	fi
+done
+
+echo "You dropped your eggs"

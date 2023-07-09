@@ -1,0 +1,232 @@
+Script started on Thu 06 May 2021 10:51:37 AM EDT
+]0;saadat_sa@cobra:~/CSC245/Prog4[?1034h[saadat_sa@cobra Prog4]$ cat dijkstra.cpp
+#include <algorithm>
+#include <cstdlib>
+#include <fstream>
+#include <sstream>
+#include <vector>
+#include <limits.h>
+using namespace std;
+#include "graph.h"
+#include "HashTable.h"
+
+void BuildGraph(Graph<string> &Flights, char *argv[], HashTable<string> &Cities, vector<string> &orderedCities, int &numCities);
+void Dijkstra(Graph<string> &Flights,  vector<string> &orderedCities, string &startVertex, int &numCities); 
+
+void printGraph(vector<string> &orderedCities);
+void initArray(string vertex[], bool mark[], int dist[], string prev[], vector<string> &orderedCities, string &startVertex);
+void isValid(string &startVertex, HashTable<string> &Cities);
+int findIndex(string &currentVertex, string vertex[], vector<string> &v);
+bool allTrue(bool mark[], int &numCities);
+int minDist(int dist[], bool mark[], vector<string> &v);
+
+const string notFound = "ZZZ";
+      
+int main(int argc, char *argv[]) {
+
+      if(argc > 1) { 
+            
+            Graph<string> Flights; 
+            Queue<string> FlightsQ;
+            HashTable<string> Cities(notFound, 50); 
+            vector<string> orderedCities;
+            int numCities = 0;
+            
+            BuildGraph(Flights, argv, Cities, orderedCities, numCities);
+            
+            ///////////////////////////////////// DIJKTRA'S ALGORITHM /////////////////////////////////////////////////
+            cout << "\033[2J\033[1;1H";
+            cout << "\t\t^^^^^^^^^^^^^^^^ DIJKSTRA'S ALGORITHM ^^^^^^^^^^^^^^^^\n" << endl; 
+            cout << "\t\tA Weighted Graph has been built for these " << numCities << " Cities : \n" << endl;
+      
+            // Printing the Graph
+            printGraph(orderedCities);
+            //////////////////////
+            
+            // Ask user for starting point
+            string startVertex;
+            isValid(startVertex, Cities);
+            ////////////////////////////////
+            
+            cout << "\t\t------------------------------------------------------------------" << endl;
+            
+            // Printing the greedy summary table 
+            Dijkstra(Flights, orderedCities, startVertex, numCities);
+            ////////////////////////////////////
+            
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      } else { 
+              cout << "\tNo Filename given -- Program Exiting" << endl;
+              exit(1);
+      }
+      
+}
+
+void BuildGraph(Graph<string> &Flights, char *argv[], HashTable<string> &Cities, vector<string> &orderedCities, int &numCities) {
+
+      ifstream infile;
+      infile.open(argv[1]);
+      string origin, destination, line; int trip_length; 
+      
+      while(getline(infile, line)) { 
+      
+            stringstream ss(line); 
+            getline(ss, origin, ';'); 
+            getline(ss, destination, ';'); 
+            ss >> trip_length;
+            
+            if((Cities.find(origin) != origin)) 
+                  { Flights.AddVertex(origin); Cities.insert(origin); orderedCities.push_back(origin); numCities++;} 
+            if((Cities.find(destination) != destination)) 
+                  { Flights.AddVertex(destination); Cities.insert(destination); orderedCities.push_back(destination); numCities++;}
+                  
+            Flights.AddEdge(origin, destination, trip_length);
+            
+      }   
+      
+      infile.close();          
+
+}
+
+
+void Dijkstra(Graph<string> &Flights,  vector<string> &orderedCities, string &startVertex, int &numCities) { 
+      
+      string vertex[numCities];
+      bool mark[numCities];
+      int dist[numCities];
+      string prev[numCities];
+      initArray(vertex, mark, dist, prev, orderedCities, startVertex);
+      
+
+      string currentVertex = startVertex;
+      Queue<string> FlightsQ; 
+
+
+      while(!allTrue(mark, numCities)) {
+            
+            int currentIndex; 
+            Flights.GetToVertices(currentVertex, FlightsQ);
+            
+            while(!FlightsQ.isEmpty()) { 
+                  currentVertex = FlightsQ.dequeue();
+                  int weight = Flights.WeightIs(startVertex, currentVertex);
+                  currentIndex = findIndex(currentVertex, vertex, orderedCities);
+                  int distance = weight + dist[currentIndex];
+                  if(!mark[currentIndex] && (dist[currentIndex] > weight)) { 
+                        dist[currentIndex] = weight;
+                        prev[currentIndex] = currentVertex;
+                  }
+            }
+            
+            currentIndex = minDist(dist, mark, orderedCities);
+            cout << currentIndex << endl;
+            currentVertex = vertex[currentIndex]; 
+            mark[currentIndex]; 
+            cout << "\t\t\t" << vertex[currentIndex] << "\t\t\t" << dist[currentIndex] << "\t\t\t" << prev[currentIndex] << "\n" << endl;
+      }
+           
+            
+}
+
+void printGraph(vector<string> &orderedCities) { 
+
+      sort(orderedCities.begin(), orderedCities.end());
+      
+      for(int i = 0; i < orderedCities.size(); i++) { 
+            cout << "\t\t\t" << orderedCities.at(i);
+                  if((i + 1) % 3 == 0 && i > 0)
+                        cout << endl;  
+      }
+}
+
+void isValid(string &startVertex, HashTable<string> &Cities) { 
+
+            bool check = true;  
+            while(check) { 
+      
+                  cout << "\n\n\t\tPlease enter your starting vetex : ";
+                  cin >> startVertex; cin.ignore(); cout << endl;
+            
+                  if(Cities.find(startVertex) == startVertex) { 
+                        check = false;
+                  } else { 
+                        cout << "\t\tVertex not found - Try again\n" << endl;
+                  }
+
+            }
+}
+
+void initArray(string vertex[], bool mark[], int dist[], string prev[], vector<string> &orderedCities, string &startVertex) { 
+
+      // Marking all distance as infinity
+      for(int i = 0; i < orderedCities.size(); i++)
+            dist[i] = INT_MAX;
+
+      // Marking the index of the array with the vertex the user wanted to start with
+      int index = -1;   
+      copy(orderedCities.begin(), orderedCities.end(), vertex);
+      for(int i = 0; i < orderedCities.size(); i++) { 
+            if(vertex[i] == startVertex) { 
+                  vertex[i] = startVertex;
+                  mark[i] = true;
+                  dist[i] = 0;
+                  prev[i] = "N/A";
+            }
+      }
+      
+      cout << "\t\t\tVertex\t\t\tDistance\t\t\tPrevious\n" << endl;
+      cout << "\t\t\t" << vertex[index] << "\t\t\t" << dist[index] << "\t\t\t" << prev[index] << "\n" << endl;
+}
+
+int findIndex(string &currentVertex, string vertex[], vector<string> &v) {
+
+      int index = -1;
+      for(int i = 0; i < v.size(); i++) { 
+            if(currentVertex == vertex[i])
+                  index = i;
+      }
+      
+      return index;
+
+}
+
+bool allTrue(bool mark[], int &numCities) { 
+
+      for(int i = 0; i < numCities; i++) { 
+            if(!mark[i]) { 
+                  return false;
+            }
+      }
+      
+      return true;
+      
+}
+
+int minDist(int dist[], bool mark[], vector<string> &v) { 
+
+      int min = INT_MAX, minIndex;
+      
+      for (int i = 0; i < v.size(); i++) 
+            if(mark[i] == false && dist[i] <= min)
+                  min = dist[i], minIndex = i;
+                  
+      return minIndex;
+}
+]0;saadat_sa@cobra:~/CSC245/Prog4[saadat_sa@cobra Prog4]$ c++ dijkstra.cpp
+]0;saadat_sa@cobra:~/CSC245/Prog4[saadat_sa@cobra Prog4]$ ./a.out fin[K[K[Kginfile1[K3.dat
+[2J[1;1H		^^^^^^^^^^^^^^^^ DIJKSTRA'S ALGORITHM ^^^^^^^^^^^^^^^^
+
+		A Weighted Graph has been built for these 12 Cities : 
+
+			Athens			Atlanta			Augusta
+			Baxley			Conyers			Ft. Oglethorpe
+			Macon			Norcross			Savannah
+			Suwanee			Valdosta			Warner Robins
+
+
+		Please enter your starting vetex : ^C
+]0;saadat_sa@cobra:~/CSC245/Prog4[saadat_sa@cobra Prog4]$ exit
+exit
+
+Script done on Thu 06 May 2021 10:52:10 AM EDT

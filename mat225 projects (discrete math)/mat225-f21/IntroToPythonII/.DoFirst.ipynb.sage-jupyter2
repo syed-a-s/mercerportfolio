@@ -1,0 +1,19 @@
+{"backend_state":"init","connection_file":"/tmp/xdg-runtime-user/jupyter/kernel-547d2264-8a97-48e9-a636-6f2a852c0e9a.json","kernel":"sage-9.3","kernel_error":"","kernel_state":"idle","kernel_usage":{"cpu":0,"memory":0},"metadata":{"language_info":{"codemirror_mode":{"name":"ipython","version":3},"file_extension":".py","mimetype":"text/x-python","name":"python","nbconvert_exporter":"python","pygments_lexer":"ipython3","version":"3.9.2"}},"trust":true,"type":"settings"}
+{"cell_type":"code","end":1631112191353,"exec_count":9,"id":"48eaf4","input":"p or q","kernel":"sage-9.3","output":{"0":{"data":{"text/plain":"True"},"exec_count":9}},"pos":10,"start":1631112191346,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"8dba65","input":"","pos":7,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"ceed06","input":"a.","pos":6,"type":"cell"}
+{"cell_type":"code","exec_count":1,"id":"ce5308","input":"# create a list\n\na=[1,5,3,2]","pos":1,"type":"cell"}
+{"cell_type":"code","exec_count":2,"id":"9ba1d6","input":"# sort the list\na.sort()\nprint(a)","output":{"0":{"name":"stdout","output_type":"stream","text":"[1, 2, 3, 5]\n"}},"pos":2,"type":"cell"}
+{"cell_type":"code","exec_count":3,"id":"2574c7","input":"# append an element to the end of the list\n\na.append(17)\nprint(a)","output":{"0":{"name":"stdout","output_type":"stream","text":"[1, 2, 3, 5, 17]\n"}},"pos":3,"type":"cell"}
+{"cell_type":"code","exec_count":4,"id":"db1c2b","input":"# \"pop\" off the first element of the list\n# this removes the element in position 0 from the list\na.pop(0)\nprint(a)","output":{"0":{"name":"stdout","output_type":"stream","text":"[2, 3, 5, 17]\n"}},"pos":4,"type":"cell"}
+{"cell_type":"code","exec_count":7,"id":"5002d2","input":"a = [1, 2, 3, 4, \"hello\", 41, \"guard\", \"band\", 14, \"tenth\"]\na[4]\na.pop(0)\na.append(225)\na.append(\"math\")\na.append(\"fun\")\na.insert(4, \"bruhman\")\nprint(a)","kernel":"sage-9.3","output":{"0":{"name":"stdout","text":"[2, 3, 4, 'hello', 'bruhman', 41, 'guard', 'band', 14, 'tenth', 225, 'math', 'fun']\n"}},"pos":9,"state":"done","type":"cell"}
+{"cell_type":"markdown","id":"b668ac","input":"## Try at your desk\n\n- Create a list of several (more than 10) elements of different data types.\n- Print out the 5th element.\n- Pop off the first element in the list.\n- Append the elements: `225`, `math`, `fun` to your list.\n- Figure out how to insert an element at the 4th position in the list.\n","pos":8,"type":"cell"}
+{"cell_type":"markdown","id":"d85641","input":"To see more actions you can do with lists, type the list name and a period.  Then press the tab key.","pos":5,"type":"cell"}
+{"cell_type":"markdown","id":"dff990","input":"# Working with Lists\n\nLists are a very useful data type.  Here are some options when working with lists.\n","pos":0,"type":"cell"}
+{"end":1631112181617,"exec_count":8,"id":"025f73","input":"p = True\nq = False\np and q","kernel":"sage-9.3","output":{"0":{"data":{"text/plain":"False"},"exec_count":8}},"pos":9.5,"start":1631112181606,"state":"done","type":"cell"}
+{"end":1631112198255,"exec_count":10,"id":"efecd1","input":"not(p)","kernel":"sage-9.3","output":{"0":{"data":{"text/plain":"False"},"exec_count":10}},"pos":11,"start":1631112198249,"state":"done","type":"cell"}
+{"end":1631112225095,"exec_count":11,"id":"2f3f47","input":"not(p) or q","kernel":"sage-9.3","output":{"0":{"data":{"text/plain":"False"},"exec_count":11}},"pos":12,"start":1631112225089,"state":"done","type":"cell"}
+{"exec_count":12,"id":"ed1934","input":"","kernel":"sage-9.3","output":{"0":{"name":"stdout","text":"True True True\nTrue False False\nFalse True True\nFalse False True\n"}},"pos":13,"state":"done","type":"cell"}
+{"id":"6b0826","input":"","pos":14,"type":"cell"}
+{"id":0,"time":1631658560203,"type":"user"}
+{"last_load":1631110991377,"type":"file"}

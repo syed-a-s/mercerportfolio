@@ -1,0 +1,4 @@
+{"backend_state":"init","connection_file":"/tmp/xdg-runtime-user/jupyter/kernel-73cd1449-b4ae-4363-9466-f2940e4ebea9.json","kernel":"python3","kernel_error":"","kernel_state":"idle","kernel_usage":{"cpu":0,"memory":0},"metadata":{"language_info":{"codemirror_mode":{"name":"ipython","version":2},"file_extension":".py","mimetype":"text/x-python","name":"python","nbconvert_exporter":"python","pygments_lexer":"ipython2","version":"2.7.15"}},"trust":true,"type":"settings"}
+{"exec_count":39,"id":"20c007","input":"x = 0.5\nN = 10","kernel":"python3","output":{"0":{"name":"stdout","text":"3\n6\n9\n12\n15\n18\n21\n24\n27\n30\n"}},"pos":6,"state":"done","type":"cell"}
+{"id":0,"time":1631110521135,"type":"user"}
+{"last_load":1630506147256,"type":"file"}

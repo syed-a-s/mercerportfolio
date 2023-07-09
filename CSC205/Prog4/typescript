@@ -1,0 +1,24 @@
+Script started on Wed 09 Dec 2020 11:25:55 PM EST
+]0;saadat_sa@cobra:~/CSC205/Prog4[?1034h[saadat_sa@cobra Prog4]$ javac TimeShare.java
+]0;saadat_sa@cobra:~/CSC205/Prog4[saadat_sa@cobra Prog4]$ jaf[Kva Timea[KShire
+Error: Could not find or load main class TimeShire
+]0;saadat_sa@cobra:~/CSC205/Prog4[saadat_sa@cobra Prog4]$ java TimeShire[K[K[Kare
+Which job file? mybo  jpbs   obs.dat
+
+Job Control Analysis : Summary Report
+
+Job id	arrival	start	run	wait	turnaround
+      	time   	time	time	time	time
+
+job1	1	1	3	0	6
+
+
+Average Wait Time => 0.0
+	 CPU Usage => 7
+	 CPU Idle => 3
+	 CPU Usage (%) => 0
+
+]0;saadat_sa@cobra:~/CSC205/Prog4[saadat_sa@cobra Prog4]$ exit
+exit
+
+Script done on Wed 09 Dec 2020 11:26:36 PM EST

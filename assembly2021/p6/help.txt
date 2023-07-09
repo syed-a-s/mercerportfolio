@@ -1,0 +1,32 @@
+MyMatrix :   0 1
+        0    1 2
+        1    4 -2
+        2   -10 8
+
+add ebx, 2 ; next on row
+add ebx, cols*2 ; next row down
+
+high level : 
+
+  for(row = 0; row < Rows; row++)
+    for(col = 0; col < Cols; col++)
+      RowSums[row] += MyMatrix[row][col]
+    
+assembly : 
+
+  mov edx, RowSums
+  xor ebx, ebx
+  mov ecx, Rows
+  Top1:
+    mov [saveECX], ecx
+    mov ecx, Cols
+
+    Top2:
+      mov ax, [My+ebx]
+      add ebx, 2
+      add [edx], ax_________ ??? 
+      loop Top2
+
+      add edx, 2 
+      mov ecx, [saveECX]
+    loop Top1

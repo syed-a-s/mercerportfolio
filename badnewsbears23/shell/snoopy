@@ -1,0 +1,51 @@
+#!/bin/bash
+
+class_tag="BADNEWSBEARS23"
+thoseon=`who | cut -d" " -f1`
+everyone=`cat /etc/passwd | cut -d":" -f1`
+
+if [ "$1" == all ] && [ $# -le 1 ]; then
+	# "all" arg -- show information about csc460 class
+	list=`grep $class_tag /etc/passwd | cut -d":" -f1`
+	msg="Snooping info about classmates in CSC460..."
+elif [ $# -eq 0 ]; then
+	# 0 args -- show information about whos logged on
+	list=`who | cut -d" " -f1 | sort -u`
+	msg="Snooping info about those logged on"
+else
+	# args > 1 -- show information about specified users
+	list=$*
+	msg="Snooping info about $*"  
+fi
+
+echo $msg
+echo
+sleep 1
+
+
+echo USERID ... NAME ... PHONE ... TTY ... WHAT
+
+for user in $list; do
+	# ignore root
+	if [ "$user" == "root" ]; then
+		continue
+	fi
+
+	# check if user is logged on
+	for loggedon in $thoseon; do
+		if [ "$user" == "$loggedon" ]; then
+			tty="some machine"
+			what="doing something"
+			break
+		else
+			tty="NOT ON"
+			what="-"
+		fi
+	done
+
+	user_id=$user
+	name=`grep $user /etc/passwd | cut -d":" -f5 | cut -d"," -f1`
+	phone=`grep $user /etc/passwd | cut -d":" -f5 | cut -d"," -f3`
+	
+	echo $user_id ... $name ... $phone ... $tty ... $what
+done

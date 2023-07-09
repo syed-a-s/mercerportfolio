@@ -1,0 +1,95 @@
+Author : Syed Saadat
+Proj   : The Spellchecker
+Date   : April 5th, 2021
+
+
+
+      Goal
+      
+            - The program needs to look at at each individual word from a text a file and give the user a correct spelling suggestion.
+            
+      Input and Output
+      
+            - The user can put the name of a text file at the command line
+            - The user can enter different commands : a, i, g, s, and q
+            
+            - The program can return a correct suggested spelling
+            - The program can write all the not found words into a notfound.txt
+            - The program can write any word wanted by the user into dict.txt
+            
+      Classes Used
+      
+            - HashTable        : A data structure that holds values by marking it with a key. The key can
+                                 be defined in different ways to efficiently store the data. This was helpful
+                                 in storing the dictionary. 
+            
+            - BinarySearchTree : A data structure where the root node is always less than its two childrenl. This
+                                 was helpful storing all the words that were not found and then later printing it 
+                                 out into a file.
+            
+            - sstream          : This class is used for streaming strings. For this project, it was useful
+                                 reading lines from the text files word by word.
+            
+      Algorithm
+      
+            while we still have the next line
+            
+                  Read through each line word by word
+                  
+                        if the word has punctuation or numbers, then get rid of it
+                        
+                        if the word is found, blank, or just ignored, then do nothing
+                        
+                        else, 
+                        
+                              write the word into a different file
+                              
+                              Then show user all the different commands there are
+                              
+                              Put in the command
+                              
+                                    Don't leave the process until said so
+                                    
+                                          a - Add the current word
+                                          
+                                                Open the dictionary text and write the new word in.
+                                                Then close the dictionary
+                                                
+                                                Also, add the word into the hash table dictionary in
+                                                the program.
+                                                
+                                                leave this 
+                                                
+                                          i - Ignore the current word and future occurences
+                                          
+                                                Add this word into a hash table of ignored words. Then
+                                                next time it can check to see if this word is an ignored word 
+                                                if it come up again.
+                                                
+                                                leave this
+                                                
+                                          g - Go on to the next word
+                                          
+                                                leave this
+                                                
+                                          s - Suggest a spelling
+                                          
+                                                Go through every iteration of the word by swapping the every 
+                                                two letters until the end word has reached.
+                                                
+                                                ONLY suggested the word if the suggested word is found in the 
+                                                dictionary
+                                                
+                                                If no suggested word is found, then ask user what they would 
+                                                like to do differently
+                                                
+                                          q - Exit the program
+                                          
+                                                leave this and exit
+                                                
+                                          anything else
+                                          
+                                                ask user to input the command again
+                                                
+                                          
+                         

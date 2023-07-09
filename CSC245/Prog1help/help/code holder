@@ -1,0 +1,22 @@
+        int i = 0;
+        while (i != 2) { 
+        cout << list.getCurrLineNum() << "> ";
+          std::cin >> choice;  
+          if (choice == 'I') { 
+              cin >> newLine;
+              list.insertLine(newLine);
+          } else if (choice == 'D') { 
+              list.deleteLine();
+          } else if (choice == 'L') { 
+              list.printList();
+          } else if (choice == 'P') { 
+              list.movePrevLine();
+          } else if (choice == 'N') { 
+              list.moveNextLine();
+          } else if (choice == 'E') { 
+              return 0;
+          } else { 
+              return 0;
+          }
+          i++;
+        }      

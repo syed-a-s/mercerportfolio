@@ -1,0 +1,48 @@
+Syed Saadat
+Project 4
+
+
+        Caesar's Cipher
+        
+  a) The program will take a passwor from the user and takes its ASCII value and the that 
+  to the original ASCII values of a test file. It will also do the opposite and decrypt the
+  text file.
+  b) Input: 1. The file the user wants to encrypt/decrypt
+            2. The file the user wants to create and store the encrypted/decrypted message into
+  c) The Algorithm
+  
+        The Program needs to repeat if the user wants to. To do that, use a while loop
+        
+        The main method will call other methods to complete the task.
+        Main method          
+        {
+        
+        }
+        
+    *** intro()
+        
+        Simple print messages to make the the greeting look nice
+        
+        getPassword()
+        
+    *** Prompt user for a password to encrypt/decrypt with
+        
+        Use a for loop to count the length of password
+        Add all values and return it
+        
+    *** getFileName(String prompt)
+    
+        Simply scan for the file name
+    
+    *** getType()
+    
+        Use a do loop with a boolean value. The value will change depending if they Encrypt/Decrypt 
+        or if the user puts an invalid input
+        
+        The boolean value will be the opposite of what it needs if the input is invalid causing
+        the loop to restart
+    
+    *** rerunPrompt()
+    
+        Checks if the chars are the same. Then it will decide if it should loop or not
+        

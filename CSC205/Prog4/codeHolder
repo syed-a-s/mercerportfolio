@@ -1,0 +1,27 @@
+		    while (!inputQ.isEmpty()) {
+			      Job nextJob = (Job) inputQ.front();
+			      if (nextJob.arrivalTime == clock) {
+                 jobQ.enqueue(nextJob);   
+	               inputQ.dequeue();        
+			      }
+
+               if (!jobQ.isEmpty()) {
+                  Job activeJob = (Job) jobQ.front();
+				          if((activeJob.startTime > -1) && (activeJob.runTime == clock - activeJob.startTime)) {
+					            activeJob.turnTime = nextJob.arrivalTime - clock ; 
+					            outputQ.enqueue(jobQ.dequeue());
+                      System.out.println(5);	
+				          }
+
+ 				          if((activeJob.arrivalTime <= clock) && (activeJob.startTime == -1)) {                        
+					            activeJob.startTime = clock;
+					            activeJob.waitTime = activeJob.startTime - activeJob.arrivalTime;
+				          }
+			         }
+			
+			     if (jobQ.isEmpty() && !inputQ.isEmpty()) {
+    				  idle++;
+			     } else {
+				      usage++;
+			     }
+			     clock++;

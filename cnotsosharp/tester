@@ -1,0 +1,43 @@
+#!/bin/bash
+
+chmod u+x composite.lisp
+
+gfortran composite.f95
+mv ./a.out fortout
+
+rustc composite.rs
+
+mcs composite.cs
+
+echo "GO"
+echo "----"
+
+go run composite.go $1 $2
+
+echo ""
+echo ""
+
+echo "Fortran"
+echo "----"
+fortout $1 $2
+
+
+echo ""
+echo ""
+
+echo "C#"
+echo "----"
+mono composite.exe $1 $2
+
+echo ""
+echo ""
+echo "Rust"
+echo "----"
+./composite $1 $2
+
+echo ""
+echo ""
+echo "Lisp"
+echo "----"
+./composite.lisp $1 $2
+

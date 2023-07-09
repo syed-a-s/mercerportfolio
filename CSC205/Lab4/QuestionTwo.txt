@@ -1,0 +1,21 @@
+Author : Syed Saadat
+
+
+         Lab 4 Questions 
+         
+         
+         2. a) The capacity is the total number of cells while the size is 
+               the number of cells that actually have data in them.
+                
+            b) It can hold as many as it can before it runs out of memory.
+               However, theoretically, it can hold up to 2,147,483,647 elements.
+                
+            c) 1. Arrays are fixed length and the length cannot be changed after created.
+               2. Memory is already allocated to Arrays, so it can lead to wasted memory if
+                  every spot in an array is not used. 
+                  
+               Arraylists do not have these issues.
+               
+            d) 1. If you need to work with fixed values, then arrays are better for that.
+               2. Arrays do not cause slowdowns as much as ArrayList so it can be better
+                  for speed. 

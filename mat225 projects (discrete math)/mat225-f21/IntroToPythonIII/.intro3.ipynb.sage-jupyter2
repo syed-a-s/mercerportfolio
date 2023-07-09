@@ -1,0 +1,29 @@
+{"backend_state":"init","connection_file":"/tmp/xdg-runtime-user/jupyter/kernel-f0ac31e5-cda5-413b-974b-d59dfff8a325.json","kernel":"python3","kernel_error":"","kernel_state":"idle","kernel_usage":{"cpu":0,"memory":0},"metadata":{"language_info":{"codemirror_mode":{"name":"ipython","version":3},"file_extension":".py","mimetype":"text/x-python","name":"python","nbconvert_exporter":"python","pygments_lexer":"ipython3","version":"3.8.10"}},"trust":true,"type":"settings"}
+{"cell_type":"code","exec_count":0,"id":"9ab41e","input":"","pos":25,"type":"cell"}
+{"cell_type":"code","exec_count":10,"id":"37a2b0","input":"def bin(n) : \n    result = []\n    q = n\n    while (q > 0) :\n        r = q % 2\n        q = q // 2\n        result.append(r)\n    result.reverse()\n    return result\n\nprint(bin(8))","output":{"0":{"name":"stdout","output_type":"stream","text":"[1, 0, 0, 0]\n"}},"pos":24,"type":"cell"}
+{"cell_type":"code","exec_count":10,"id":"6bd4e2","input":"funlist.sort()","pos":9,"type":"cell"}
+{"cell_type":"code","exec_count":11,"id":"1c54b0","input":"funlist","output":{"0":{"data":{"text/plain":"[3, 4, 5, 6, 7, 144]"},"exec_count":11,"output_type":"execute_result"}},"pos":10,"type":"cell"}
+{"cell_type":"code","exec_count":12,"id":"f53169","input":"def sqr(x) :\n    return(x * x)","pos":11,"type":"cell"}
+{"cell_type":"code","exec_count":13,"id":"f73c04","input":"sqr(151)","output":{"0":{"data":{"text/plain":"22801"},"exec_count":13,"output_type":"execute_result"}},"pos":12,"type":"cell"}
+{"cell_type":"code","exec_count":14,"id":"4eb5d2","input":"151","output":{"0":{"data":{"text/plain":"151"},"exec_count":14,"output_type":"execute_result"}},"pos":13,"type":"cell"}
+{"cell_type":"code","exec_count":15,"id":"cdec84","input":"newthing = map(sqr, funlist)","pos":14,"type":"cell"}
+{"cell_type":"code","exec_count":16,"id":"e7a88c","input":"newthing","output":{"0":{"data":{"text/plain":"<map at 0x7f24b33f3ac0>"},"exec_count":16,"output_type":"execute_result"}},"pos":15,"type":"cell"}
+{"cell_type":"code","exec_count":17,"id":"f1d171","input":"list(newthing)","output":{"0":{"data":{"text/plain":"[9, 16, 25, 36, 49, 20736]"},"exec_count":17,"output_type":"execute_result"}},"pos":16,"type":"cell"}
+{"cell_type":"code","exec_count":18,"id":"2aeb4a","input":"newthing","output":{"0":{"data":{"text/plain":"<map at 0x7f24b33f3ac0>"},"exec_count":18,"output_type":"execute_result"}},"pos":17,"type":"cell"}
+{"cell_type":"code","exec_count":2,"id":"f2a933","input":"funlist.append(144)","pos":2,"type":"cell"}
+{"cell_type":"code","exec_count":24,"id":"d1741f","input":"# practice\nL = [\"bruh\", 1, \"mercer\", 2, 7, 6]\nL.extend((\"saadat\", 21, \"atlanta\"))\nL.reverse()\nL","output":{"0":{"data":{"text/plain":"['atlanta', 21, 'saadat', 6, 7, 2, 'mercer', 1, 'bruh']"},"exec_count":24,"output_type":"execute_result"}},"pos":18,"type":"cell"}
+{"cell_type":"code","exec_count":25,"id":"e0801b","input":"L.pop(3)","output":{"0":{"data":{"text/plain":"6"},"exec_count":25,"output_type":"execute_result"}},"pos":19,"scrolled":true,"type":"cell"}
+{"cell_type":"code","exec_count":26,"id":"b8530e","input":"L[1]","output":{"0":{"data":{"text/plain":"21"},"exec_count":26,"output_type":"execute_result"}},"pos":20,"type":"cell"}
+{"cell_type":"code","exec_count":27,"id":"6c0c30","input":"numlist = [1, 5, 51, 12]\nnewNum = map(sqr, numlist)\nlist(newNum)","output":{"0":{"data":{"text/plain":"[1, 25, 2601, 144]"},"exec_count":27,"output_type":"execute_result"}},"pos":21,"type":"cell"}
+{"cell_type":"code","exec_count":28,"id":"40d8f8","input":"35 // 2","output":{"0":{"data":{"text/plain":"17"},"exec_count":28,"output_type":"execute_result"}},"pos":22,"type":"cell"}
+{"cell_type":"code","exec_count":29,"id":"3edef7","input":"35 % 2","output":{"0":{"data":{"text/plain":"1"},"exec_count":29,"output_type":"execute_result"}},"pos":23,"scrolled":true,"type":"cell"}
+{"cell_type":"code","exec_count":3,"id":"a123b7","input":"funlist","output":{"0":{"data":{"text/plain":"[1, 2, 3, 4, 5, 6, 7, 144]"},"exec_count":3,"output_type":"execute_result"}},"pos":3,"type":"cell"}
+{"cell_type":"code","exec_count":3,"id":"f6217c","input":"funlist = [1,2,3,4,5,6,7]","pos":1,"type":"cell"}
+{"cell_type":"code","exec_count":5,"id":"0ba14d","input":"funlist.pop(0)","output":{"0":{"data":{"text/plain":"2"},"exec_count":5,"output_type":"execute_result"}},"pos":4,"scrolled":true,"type":"cell"}
+{"cell_type":"code","exec_count":6,"id":"5930a9","input":"funlist","output":{"0":{"data":{"text/plain":"[3, 4, 5, 6, 7, 144]"},"exec_count":6,"output_type":"execute_result"}},"pos":5,"type":"cell"}
+{"cell_type":"code","exec_count":7,"id":"de3a94","input":"funlist.index(144)","output":{"0":{"data":{"text/plain":"5"},"exec_count":7,"output_type":"execute_result"}},"pos":6,"type":"cell"}
+{"cell_type":"code","exec_count":8,"id":"41d4c4","input":"funlist.reverse()","pos":7,"type":"cell"}
+{"cell_type":"code","exec_count":9,"id":"88747b","input":"funlist","output":{"0":{"data":{"text/plain":"[144, 7, 6, 5, 4, 3]"},"exec_count":9,"output_type":"execute_result"}},"pos":8,"type":"cell"}
+{"cell_type":"markdown","id":"75a305","input":"## More practice with lists","pos":0,"type":"cell"}
+{"id":0,"time":1635300772932,"type":"user"}
+{"last_load":1635300773242,"type":"file"}

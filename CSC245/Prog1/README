@@ -1,0 +1,99 @@
+Author : Syed Saadat
+Date   : 2-17-21
+Proj   : The Line Editor
+
+
+
+      Goal 
+      
+        - The client needs to be able to read or create the file name entered at run time. 
+          The lines in the entered file will be stored into a LineList object which can then 
+          manipulate the lines in the entered file. Finally, after manipulating the entered file,
+          the changes will be saved into that same entered file.
+        
+      Input and Output
+      
+        - The client program takes a char array for the file name at run time, which can then be 
+          read later to store strings into the LineList.
+        - The client program takes user input of I, L, N, P, and E. Those inputs will be able to 
+          insert a new line, print the list, point to the next line, point to the previous line, 
+          and exit and save the list respectively.
+        - The client program has an output file, which is the same as the entered file. The outfile 
+          will save any manipulations into the entered file.
+          
+      Outline of the OOP design
+      
+        - The LineList class is used for the client program which is an implemented program. All built
+          classes include iostream, string, fstream, and stdlib.
+        - LineList has three private variables : currLine, currLineNum, and length
+                
+                - currLine is a pointer variable of struct LineNode. 
+                  This is used to create the whole LineList
+                  
+                - currLineNum is an int that helps code a lot of the functions.
+                
+                - length is also an int that helps code a lot of the functions.
+                
+        - LineList has 10 public functions : goToTop(), goToBottom(), insertLine(), deleteLine(), printList(),
+          moveNextLine(), movePrevLine(), getCurrLineNum(), getLength(), and getCurrLine()
+        
+                - gotToTop() makes currLine point to the top of the list. This function
+                  is used to help build other functions
+                  
+                - gotToBottom() makes currLine point to the bottom of the list. Similar to before,
+                  it is used to help build other functions
+                  
+                - insertLine() inserts a new line of information. It will insert one before if 
+                  currLine is pointing to the very bottom line and one after if currLine is pointing 
+                  to the very top line. If currLine is pointing to a a line where there is already 
+                  information stored, that line will be moved to the next line and the new line will
+                  take that line's old spot.
+                  
+                - deleteLine() deletes a line if currLine is not pointing the very top or bottom lines.
+                  It will also move other lines respectively in their correct places if a line in the 
+                  middle is deleted.
+                  
+                - moveNextLine() makes currLine point to the next line if it's not the very bottom line.
+                
+                - movePrevLine() makes currLine point to the previous line it it's not the very top line.
+                
+                - getCurrLineNum() returns the current line number. This is useful for printing the list
+                  and building other functions
+                  
+                - getLength() returns the current length of the line. This is useful for deleteLine() function
+                  and goToTop() function. And whenever client program needs LineList to point to the bottom.
+                  
+                - getCurrLine() returns the info of currLine from the LineList class. It is useful for 
+                  printing the output file
+                  
+                
+      Algorithm
+            
+                If the user entered a file name then 
+                
+                      Open the entered file 
+                      
+                      Read the lines in the file and store it in
+                      the LineList
+                      
+                      While the user hasn't exited the program
+                      
+                            Either insert a line
+                            
+                            or delete a line
+                            
+                            or print a line
+                            
+                            or move to the next line 
+                            
+                            or the previous line
+                            
+                            and if they exit, save the new things 
+                            to the same file and close the file
+                            
+        
+                And if they didn't enter a file name, exit
+                with an error message
+                  
+      Note : I mentioned in this in linelist.cpp, but unfortunately I had to change currLine to 
+             initialization from 1 to 0 to make my client file work properly

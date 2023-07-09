@@ -1,0 +1,5 @@
+egt 6
+fiel 4
+soem 4
+thsi 4
+tiem 6

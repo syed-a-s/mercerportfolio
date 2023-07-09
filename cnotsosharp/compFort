@@ -1,0 +1,4 @@
+#!/bin/bash
+
+gfortran composite.f95
+mv ./a.out fortout

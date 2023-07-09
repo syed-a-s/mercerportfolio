@@ -1,0 +1,88 @@
+---
+output: pdf_document
+---
+
+# RSA Secret-Sharing Activity
+
+In this activity, groups of students will set up the RSA keys and practice encoding and decoding messages between groups.
+
+** Be sure your Kernel for this activity is set to **SageMath 9.4**.
+
+### Step 1: Setup
+
+1. Pick two prime numbers, $p$ and $q$.
+
+- Keep these secret: $p =$ \_\_\_\_\_ $q =$ \_\_\_\_\_.
+- Try `random_prime(2^50,lbound=100)` if you need help choosing a prime.
+
+2. Find the number $b = \text{lcm} ((p-1)\cdot(q-1))$.
+
+- $b =$ \_\_\_\_\_\_\_\_\_. Keep b secret, too.
+
+3. Find the number $n = p\cdot q$.
+
+- $n =$ \_\_\_\_\_\_\_\_\_. You will want to
+    publicize $n$.
+
+4. Now, pick a public-key exponent $e$, such that $e$ and $n$ are relatively prime.
+
+- $e =$ \_\_\_\_\_\_\_\_\_.  You will want to publicize $e$.
+
+5. Finally, find your secret private-key exponent $d$. To do this, find
+   the number $d$ such that $e\cdot d\, (\text{mod } b) = 1$.
+
+- Here we need to do the extended Euclidean algorithm to find integers $u,v$ so that $1=e\cdot u + b\cdot v$.
+- We know how to do this by hand, but SageMath can do it using the `xgcd` command.
+- The syntax is `xgcd(e,b)` and this will return a triple `(gcd(e,b),u,v)` where
+
+$$
+\text{gcd}(e,b)=e\cdot u + b\cdot v.
+$$
+
+- Remember that if $u$ is negative, just add $b$ until you get a positive value.  This will be your private key $d$.
+- $d =$ \_\_\_\_\_\_\_\_\_. Do NOT tell anyone $d$.
+
+---
+\newpage
+
+### Step 2: Secret sharing
+
+1. Find another team with whom you want to exchange messages, and tell them your modulus $n$ and your public-key exponent $e$. They should also tell you their modulus (call it $n_2$) and their public-key exponent (call it $e_2$).
+
+- Their key: $n_2$ = \_\_\_\_\_\_\_, $e_2$ = \_\_\_\_\_\_\_\_.
+
+2. To send a message, convert it to numbers using the `StringToInt` command along with the `map` and `list` commands.
+
+```
+message='hello'
+plaintext=list(map(StringToInt,message))
+```
+
+3. Your message: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+- Its numerical equivalent: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+4. For each number $m$ in your `plaintext` variable, calculate $m^{e_2} (\text{mod } n_2)$. Write a function\footnote{You can use the command \texttt{pow(m,e,n) for large integers.} to efficiently compute $m^e (\text{mod } n)$.} to do this encoding.  Then, you can map it to the list.  Call the result `ciphertext`.  This is your encoded message.  Note: _You are encoding the message using the other team's public key_.
+
+```
+def encode(m,e2,n2):
+  your code here...
+```
+
+5. Your encrypted message: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+6. Then, give your encrypted message to the team from whom you got $n_2,e_2$. They should give you a sequence of numbers as well.
+
+- Their encrypted message: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+7. Now, to decrypt their message, use your secret exponent $d$. For each
+   number $c$ in their message, compute $c^{d} (\text{mod } n)$. Write a function to do this decoding.  Then, you can map it to the list.  _Note that you are decoding the message using your private key_.
+   This will reveal the numbers in their original message!
+
+```
+def decode(c,d,n):
+  your code here...
+```
+
+8. Use `IntToString` to convert these back to letters to get their message to you.
+9. Their message: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_

@@ -1,0 +1,6 @@
+{"backend_state":"init","kernel":"python2","kernel_state":"idle","kernel_usage":{"cpu":0,"memory":884736},"metadata":{"language_info":{"codemirror_mode":{"name":"ipython","version":2},"file_extension":".py","mimetype":"text/x-python","name":"python","nbconvert_exporter":"python","pygments_lexer":"ipython2","version":"2.7.13"}},"trust":true,"type":"settings"}
+{"cell_type":"code","exec_count":0,"id":"633e24","input":"","pos":2,"type":"cell"}
+{"cell_type":"code","exec_count":18,"id":"d3d98f","input":"def dec_to_bin(n):\n    remainder=[]\n    while (n!=0):\n        r = n % 2\n        n = n / 2\n        remainder.append(r)\n    remainder.reverse()\n    return(remainder)","pos":0,"type":"cell"}
+{"cell_type":"code","exec_count":19,"id":"87c865","input":"dec_to_bin(34)","output":{"0":{"data":{"text/plain":"[1, 0, 0, 0, 1, 0]"},"exec_count":19,"output_type":"execute_result"}},"pos":1,"type":"cell"}
+{"id":0,"time":1568210226782,"type":"user"}
+{"last_load":1568210324716,"type":"file"}

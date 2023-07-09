@@ -1,0 +1,36 @@
+     1                                  ; NAME 		: Syed Saadat
+     2                                  ; Assignment 	: Max Fib
+     3                                  ; Date		: 10-20-21
+     4                                  
+     5                                  SECTION .bss
+     6 00000000 <res 00000004>          MaxFibs		:	RESD 1
+     7 00000004 <res 00000002>          FibCount	:	RESW 1
+     8 00000006 <res 00000008>          HoldFib		:	RESD 2	;;; used to hold current and previous num
+     9                                  
+    10                                  SECTION .text
+    11                                  global _main
+    12                                  _main:
+    13                                  
+    14 00000000 BB[06000000]            mov ebx, HoldFib
+    15 00000005 C70300000000            mov dword [ebx], 0
+    16 0000000B C7430401000000          mov dword [ebx+4], 1
+    17                                  
+    18                                  ;;; the loop
+    19                                  top: 
+    20 00000012 8B03                    mov eax, [ebx]		;;; adds previous and current 
+    21 00000014 034304                  add eax, [ebx+4]	;;;
+    22                                  
+    23 00000017 8B5304                  mov edx, [ebx+4]	;;; updates previous and next fib
+    24 0000001A 8913                    mov [ebx], edx 		;;; 
+    25 0000001C 894304                  mov [ebx+4], eax	;;;
+    26                                  
+    27 0000001F A3[00000000]            mov [MaxFibs], eax	;;; updates max fib
+    28 00000024 73EC                    jnc top
+    29                                  ;;;;;;;;;;;;;
+    30                                  
+    31                                  lastBreak:
+    32                                  
+    33                                  ; Standard termination
+    34 00000026 B801000000              mov eax, 1
+    35 0000002B BB00000000              mov ebx, 0
+    36 00000030 CD80                    int 80h 

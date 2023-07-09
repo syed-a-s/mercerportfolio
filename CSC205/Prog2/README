@@ -1,0 +1,51 @@
+Author : Syed Saadat
+Title  : Project 2 
+Date   : October 5th, 2020
+
+                          Analysis and Design
+                          
+    
+                          
+    Problem : A library needs to be created so that it displays the books within the 
+    file selected by the user
+    
+    Classes Used : LibraryBook.java
+    
+    The method to count the number of books in the file :
+    
+      There is a method in LibraryBook that can count the number of books present in a
+      file. Looking and scanning through the file, I can assign every parameter in this by using 
+      delimiters because the books are seperated by ;. 
+    
+    The method used to sort the library books : 
+      
+      A selection sort can be used to arrange all the books in alphabetical order. I can compare 
+      the titles and put the minimal element in the beginning and repeat that until I longer need
+      to do so.
+      
+    The method used to Choose which action to do : 
+      
+      Check if the user wants option 1, 2, or 3. These options will go call another method that will
+      do the apporiate action. Option 1 will display the book records in order and option 2 will search
+      for the book that the user asked for. Option 3 will exit the program. 
+      
+    The method for Menu 1 (Display all Records) : 
+     
+      Go through every single spot of the book record. However, the spot will only advance to the next spot if the 
+      return key is pressed. The user should be able to return to the menu if a menu key is pressed. 
+      
+    The method for Menu 2 (Search for Book) :
+    
+      Use a binary search to find the book that the user is searching for. The binary search will repeatedly 
+      divide the search interval in half. If the search key is less than the middle item, then narrow the
+      interval to the lower half . Otherwise narrow it to the upper half. Keep going until there is nothing 
+      to find or until found. 
+      
+    
+    
+      
+  
+      
+    
+    
+    

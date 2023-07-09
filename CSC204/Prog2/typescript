@@ -1,0 +1,144 @@
+Script started on Thu 02 Jul 2020 06:58:26 PM EDT
+]0;saadat_sa@cobra:~/Prog2[?1034h[saadat_sa@cobra Prog2]$ cat -b[Kn J[KCjha[K[K[Kjamge[K[K[K[K[Khange.java
+     1	//-------------------------------------------------------------------
+     2	// Programmer   : Syed Saadat
+     3	// Class        : Dr. Digh's CSC204
+     4	// Title        : Change
+     5	//-------------------------------------------------------------------
+     6	// Program Specifation:
+     7	//
+     8	// Input        : Two double (total due and amount recieved
+     9	//
+    10	// Output       : Seven integers (change due plus the appropriate number
+    11	//                of hundreds, fifties, twenties, tens, fives, and
+    12	//                ones to be distributed)
+    13	//-------------------------------------------------------------------
+    14	
+    15	import java.util.*;
+    16	
+    17	public class Change
+    18	{
+    19	      public static void main (String[] args)
+    20		{
+    21		          int total, tendered, change, changeleft,CheckChange;
+    22	            int hunds, twnts, fift, tens, fives, ones;
+    23	            char a;
+    24	            char again = 'N';
+    25	            while(again == 'N')
+    26	            {
+    27	 
+    28	            // Prompt clerk to input the amount due and the amount tendered
+    29	            
+    30	            System.out.print("\nTotal Due (in dollars) : $ ");                 
+    31	            Scanner scan = new Scanner(System.in);
+    32	            total = scan.nextInt();
+    33	            
+    34	            System.out.print("\nAmount tendered (in dollars) : $ ");
+    35	            tendered = scan.nextInt();
+    36	            
+    37	           
+    38	         
+    39		          CheckChange = tendered - total;     // The dollar change to check which IF statement to run
+    40	           
+    41	            if(tendered < total)                                                                    
+    42	            {
+    43	            Scanner scan2 = new Scanner(System.in);      
+    44	            System.out.println("\nInsufficient Funds. Does the customer need to visit an ATM? (Y/N) "); // Asking customer if they need to grab more money. 
+    45	            a = scan2.next().charAt(0);                                                                 // If yes, the program ends. If no, the program restarts 
+    46	                if(a == 'Y')
+    47	                { 
+    48	                System.out.println("\nOkay\n"); 
+    49	                again = 'Y';
+    50	                }
+    51	                else if (a == 'N');  
+    52	            }
+    53	             
+    54	            if(CheckChange >= 0)                                                
+    55	            {
+    56	            System.out.println();                                                    // Prints Out the Change Due Here
+    57	            System.out.println("******************************************");
+    58	  
+    59	            change = tendered - total;
+    60	            System.out.print("Amount of Change Due (in dollars) : $ ");
+    61	            System.out.print(change);
+    62	         
+    63	            System.out.println("\n******************************************");      // Blank space, just ignore
+    64	            System.out.println(); 
+    65	            System.out.println("******************************************");       
+    66	            System.out.println("     How Change Should be Distributed");           
+    67	            System.out.println("******************************************");        // End of blank Space 
+    68	            
+    69	            // The Calculations of the Dollar Bills Start Here  
+    70	              
+    71	              hunds         = change / 100; 
+    72	              changeleft    = change % 100;
+    73	              fift          = changeleft / 50;
+    74	              changeleft    = changeleft % 50;
+    75	              twnts         = changeleft / 20;
+    76	              changeleft    = changeleft % 20;
+    77	              tens          = changeleft / 10;
+    78	              changeleft    = changeleft % 10;
+    79	              fives         = changeleft / 5;
+    80	              ones          = changeleft % 5;
+    81	              
+    82	            // Printing Out Dollar Bills
+    83	           
+    84		    System.out.println("Number of Hundreds => $" + hunds);
+    85	            System.out.println("Number of Fifties => $" + fift);
+    86	            System.out.println("Number of Twenties => $" + twnts);
+    87	            System.out.println("Number of Tens => $" + tens); 
+    88	            System.out.println("Number of Fives => $" + fives);
+    89	            System.out.println("Number of Ones => $" + ones);
+    90	            System.out.println("******************************************");
+    91	            
+    92	            again = 'Y';
+    93	             
+    94	            }  } 
+    95	            }
+    96	               
+    97	}    
+]0;saadat_sa@cobra:~/Prog2[saadat_sa@cobra Prog2]$ javac Chab[Knge.java
+]0;saadat_sa@cobra:~/Prog2[saadat_sa@cobra Prog2]$ java Chabnge[K[K[K[Knge
+
+Total Due (in dollars) : $ 21
+
+Amount tendered (in dollars) : $ 100
+
+******************************************
+Amount of Change Due (in dollars) : $ 79
+******************************************
+
+******************************************
+     How Change Should be Distributed
+******************************************
+Number of Hundreds => $0
+Number of Fifties => $1
+Number of Twenties => $1
+Number of Tens => $0
+Number of Fives => $1
+Number of Ones => $4
+******************************************
+]0;saadat_sa@cobra:~/Prog2[saadat_sa@cobra Prog2]$ k[Kjava Change
+
+Total Due (in dollars) : $ 5123123   
+
+Amount tendered (in dollars) : $ 500   6000
+
+******************************************
+Amount of Change Due (in dollars) : $ 877
+******************************************
+
+******************************************
+     How Change Should be Distributed
+******************************************
+Number of Hundreds => $8
+Number of Fifties => $1
+Number of Twenties => $1
+Number of Tens => $0
+Number of Fives => $1
+Number of Ones => $2
+******************************************
+]0;saadat_sa@cobra:~/Prog2[saadat_sa@cobra Prog2]$ exit
+exit
+
+Script done on Thu 02 Jul 2020 07:03:14 PM EDT

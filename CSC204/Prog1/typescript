@@ -1,0 +1,50 @@
+Script started on Thu 25 Jun 2020 05:04:21 PM EDT
+]0;saadat_sa@cobra:~/Prog1[?1034h[saadat_sa@cobra Prog1]$ cat 0[K-n Myfirst.java
+     1	import java.util.*;
+     2	
+     3	public class Myfirst
+     4	{
+     5		public static void main(String [] args)
+     6		{
+     7			// Variable used in this program
+     8			String personName;
+     9	
+    10			// Beginning of main logic
+    11	
+    12			personName = getName(); // calling value-returning method get name
+    13			printOut(personName);   // calling void method printOut
+    14		}
+    15	
+    16		private static String getName()
+    17		{
+    18			// This method will get the name of the user and
+    19			// return it to the main function
+    20	
+    21			Scanner stdin = new Scanner(System.in);
+    22			System.out.print("Please enter your first name : ");
+    23			String userInput = stdin.next();
+    24	
+    25			return userInput;
+    26		}
+    27	
+    28		private static void printOut(String personName)
+    29		{
+    30			// This method will pring a congratulatory message to
+    31			// a person with the name personName
+    32	
+    33			System.out.println("\nCongratulations " + personName +
+    34					  " on running your first Java program!!!\n\n");
+    35		}
+    36	
+    37	}
+]0;saadat_sa@cobra:~/Prog1[saadat_sa@cobra Prog1]$ Java[K[K[K[Kjavac Myfirst.java
+]0;saadat_sa@cobra:~/Prog1[saadat_sa@cobra Prog1]$ java MYfirst[K[K[K[K[K[Kufr[K[K[K[Ky[KMyfirst
+Please enter your first name : Sued   ty  ued  t  yed
+
+Congratulations Syed on running your first Java program!!!
+
+
+]0;saadat_sa@cobra:~/Prog1[saadat_sa@cobra Prog1]$ exit
+exit
+
+Script done on Thu 25 Jun 2020 05:06:08 PM EDT

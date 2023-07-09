@@ -1,0 +1,74 @@
+Syed Saadat
+Final Project
+12-4-20
+
+       TimeShare will have a queue of class jobs. The jobs will be initialized by asking the user which file 
+       they would like to scan. The job block will be calculated by letting the job thats first in the queue 
+       "work" for as long as the run time. After that job is done, that queue will dequeue and put its value 
+       in another queue called the outputQ. However, the input will only dequeue if and only when the run time
+       for the job in front has been finished. After all jobs have been dequeued into the outputQ, print out
+       this queue by using a while loop.
+      
+      
+        All classes that were used :
+        
+           - Node class
+           - Job Class
+           - Queue Class, which implements the QueueInterface class. It also has a QueueException 
+             class which implements the RuntimeException class
+          
+           
+           ////////////////// 
+           
+           Node Class
+           
+             This class has two variables: an object item and a Node node. The object item can hold 
+             whatever the user it tells it to. The node is a pointer that points to an address that holds 
+             said items. Nodes can be connected to other nodes that hold other items. To get the address of
+             the next node, getNext() is used. To get them in the node, getItem() is used. The method setNext()
+             is used to point the next address to another node. The method setItem() is used to declare any item
+             to the address pointed.
+             
+           Job Class
+           
+             This is the class that holds the information for the jobs. It includes the variables 
+             jobName, arrivalTime, startTime, runTime, waitTime, turnTime. These are initialized 
+             in the constructor.
+             
+           Queue Class
+             
+             This class is built using the Node class, or as a linked list. Queues are built by making the list 
+             circular. With the linked list, this is done by setting the lastNode to the firstNode(or itself) so
+             the address of the Nodes always points to the same place
+             
+             Queues are a first in first out type of list. The first one enqueued is the first one dequeued. 
+             The way the list is created is by making sure lastNode always points to the last node and the next 
+             node it points to is the first node (or item) in the list. So, even as the list is getting longer, 
+             lastNode is still pointing to the last node. And also howerver, using the     
+             getNext() method on lastNode would return the first node of the list. Just because the last node's
+             next address is the beginning of the of the list. 
+             
+             This class is implementing the QueueInterface class. The Queue class needs to have the isEmpty(), 
+             enqueue(), dequeue(), dequeueAll(), and a front() method
+             
+             This class can also throw QueueException because it implements the RuntimeException class.
+             This is useful in case there are any errors when handling with empty queues.
+           
+             Job Control Analysis : Summary Report
+             
+             job id     arrival   start     run    wait   turnaround
+                        time      time      time   time   time
+             ______     _______   ______    ____   ____   __________
+             
+             job1       1         1         3      0      3
+             job2       3         4         2      1      3
+             job3       4         6         5      2      7
+             job4       6         11        4      5      9
+             job5       8         15        2      7      9
+             
+             Average Wait Time =>  3.00
+             CPU USAGE         =>  16
+             CPU IDLE          =>  0
+             CPU USAGE         =>  100.00%
+             
+           

@@ -1,0 +1,45 @@
+     1                                  ROWS: EQU 3
+     2                                  COLS: EQU 2
+     3                                  
+     4                                  SECTION .data
+     5 00000000 01000200                MyMatrix: dw 1, 2
+     6 00000004 0400FEFF                          dw 4, -2
+     7 00000008 F6FF0800                          dw -10, 8
+     8                                  
+     9 0000000C 0000                    saveECX: dw 0
+    10 0000000E 00000000                saveTopCol: dd 0
+    11                                  
+    12                                  SECTION .bss
+    13 00000000 <res 00000006>          RowSums: RESW ROWS
+    14 00000006 <res 00000004>          ColSums: RESW COLS
+    15 0000000A <res 00000002>          Sum:     RESW 1
+    16                                  
+    17                                  SECTION .text
+    18                                  global _main
+    19                                  _main:
+    20                                  
+    21 00000000 B902000000              mov ecx, COLS
+    22 00000005 BA[06000000]            mov edx, ColSums
+    23                                  outer:
+    24 0000000A BB[00000000]                mov ebx, MyMatrix       
+    25 0000000F 890D[0C000000]              mov [saveECX], ecx
+    26 00000015 B903000000                  mov ecx, ROWS
+    27                                      
+    28                                      inner:
+    29 0000001A 668B03                          mov ax, [ebx]
+    30 0000001D 83C304                          add ebx, 2*COLS
+    31 00000020 660102                          add [edx], ax
+    32 00000023 E2F5                            loop inner
+    33                                      
+    34 00000025 891D[00000000]              mov [MyMatrix], ebx
+    35 0000002B 83C302                      add ebx, 2
+    36 0000002E 83C202                      add edx, 2
+    37 00000031 8B0D[0C000000]              mov ecx, [saveECX]
+    38 00000037 E2D1                        loop outer
+    39                                  
+    40                                  
+    41                                  
+    42                                  
+    43 00000039 B801000000              mov eax, 1
+    44 0000003E BB00000000              mov ebx, 0
+    45 00000043 CD80                    int 80h

@@ -1,0 +1,87 @@
+V "GNAT Lib v11"
+M P W=b
+P ZX
+
+RN
+RV NO_IO
+RV NO_DEFAULT_INITIALIZATION
+
+U screenformat%b	screenformat.adb	91a35bbd NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.io_exceptions%s	a-ioexce.ads		a-ioexce.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.fixed%s	a-strfix.adb		a-strfix.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+D ada.ads		20210728065506 76789da1 ada%s
+D a-charac.ads		20210728065506 2d3ec45b ada.characters%s
+D a-chlat1.ads		20210728065506 66457d31 ada.characters.latin_1%s
+D a-except.ads		20210728065506 449c9b65 ada.exceptions%s
+D a-inteio.ads		20210728065506 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20210728065506 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20210728065506 119b8fb3 ada.streams%s
+D a-string.ads		20210728065506 90ac6797 ada.strings%s
+D a-strfix.ads		20210728065506 aeacf44c ada.strings.fixed%s
+D a-strmap.ads		20210728065506 5a88892a ada.strings.maps%s
+D a-tags.ads		20210728065506 9eaa38c6 ada.tags%s
+D a-textio.ads		20210728065506 aef4d56d ada.text_io%s
+D a-tiinio.ads		20210728065506 390edddb ada.text_io.integer_io%s
+D a-unccon.ads		20210728065506 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20210728065506 edec285f interfaces%s
+D i-cstrea.ads		20210728065506 e53d8b8e interfaces.c_streams%s
+D screenformat.adb	20211113033824 8310ec5c screenformat%b
+D system.ads		20210728065506 a2da961d system%s
+D s-crtl.ads		20210728065506 0ebbdb71 system.crtl%s
+D s-exctab.ads		20210728065506 54135002 system.exception_table%s
+D s-ficobl.ads		20210728065506 078245e4 system.file_control_block%s
+D s-parame.ads		20210728065506 4752c4cb system.parameters%s
+D s-secsta.ads		20210728065506 9b3ab94b system.secondary_stack%s
+D s-soflin.ads		20210728065506 a7318a92 system.soft_links%s
+D s-stache.ads		20210728065506 a37c21ec system.stack_checking%s
+D s-stalib.ads		20210728065506 0f2d51ff system.standard_library%s
+D s-stoele.ads		20210728065506 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20210728065506 ed88f8fb system.storage_elements%b
+D s-traent.ads		20210728065506 26a8d361 system.traceback_entries%s
+D s-unstyp.ads		20210728065506 eea7525d system.unsigned_types%s
+D s-wchcon.ads		20210728065506 1b7d22d2 system.wch_con%s
+G a e
+G c Z b b [screenformat standard 6 11 none]
+X 1 ada.ads
+16K9*Ada 20e8 17|1r6 1r34 2r6 2r34 3r6 3r34 4r6 4r34 26r17
+X 5 a-inteio.ads
+18K13*Integer_Text_IO[13|46] 17|3w10 3r38
+X 6 a-ioexce.ads
+18K13*IO_Exceptions 30e22 17|4w10 4r38
+X 8 a-string.ads
+16K13*Strings 35e16 17|2r10 2r38
+X 9 a-strfix.ads
+43K21*Fixed 1398e22 17|2w18 2r46
+X 12 a-textio.ads
+58K13*Text_IO 728e16 17|1w10 1r38 26r21
+65P9*File_Type 17|8r14
+67n23*In_File{67E9} 17|22r21
+115U14*Open 17|21s7
+116p7 File{65P9} 17|21r13
+117e7 Mode{67E9} 17|22r13
+118a7 Name{string} 17|23r13
+130U14*Close 17|52s7
+313V13*End_Of_File{boolean} 17|26s29
+379U14*Get 17|27s13
+379p19 File{65P9} 17|27r17
+379e37 Item{character} 17|27r31
+393U14*Put 17|41s7 42s7 43s7 44s7 45s7 46s7 47s7 48s7 49s7 50s7 51s7
+466U14*Put 17|17s7
+482U14*Get_Line 17|18s7
+X 17 screenformat.adb
+6U11*screenformat 6b11 54l5 54t17
+8p7 file{12|65P9} 21m21 21r21 26r41 27r25 52m13 52r13
+9a7 userFile{string} 18m16 23r21
+9i34 len{integer} 18m26 23r33
+10e7 value{character} 27m39 29r34
+11a7 string_array(character) 29m13 35r16 37m19 37r44 41r11 42r11 43r11 44r11
+. 45r11 46r11 47r11 48r11 49r11 50r11 51r11
+12i7 pos{integer} 25m7 28m13 28r20 29r26 34r19
+13i7 counter{integer} 33m7 36m19 36r30 37r32
+34i11 i{integer} 35r29 37r57
+

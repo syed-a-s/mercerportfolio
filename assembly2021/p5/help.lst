@@ -1,0 +1,26 @@
+     1                                  ; NAME 		: Syed Saadat
+     2                                  ; Assignment 	: Max Fib
+     3                                  ; Date		: 10-20-21
+     4                                  
+     5                                  SECTION .data
+     6                                  
+     7                                  SECTION .bss
+     8 00000000 <res 00000004>          MaxFibs		:	RESD 1
+     9 00000004 <res 00000002>          FibCount	:	RESW 1
+    10 00000006 <res 00000004>          hold		:	RESD 1
+    11                                  
+    12                                  SECTION .text
+    13                                  global _main
+    14                                  _main:
+    15                                  
+    16 00000000 BB[06000000]            mov ebx, hold
+    17 00000005 C70301000000            mov dword [ebx], 1
+    18                                  break1:
+    19                                  
+    20                                  
+    21                                  
+    22                                  
+    23                                  
+    24 0000000B B801000000              mov eax, 1
+    25 00000010 BB00000000              mov ebx, 0
+    26 00000015 CD80                    int 80h 

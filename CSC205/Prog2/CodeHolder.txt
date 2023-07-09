@@ -1,0 +1,100 @@
+  
+  
+  
+  
+  
+  // Print the book info at the specified slot  
+  public static void printRecord(ArrayList<LibraryBook> books, int location) 
+  {   
+   System.out.println("Record #" + (location + 1) + " :\n");   
+   System.out.println("Title:          " + books.get(location).getTitle());   
+   System.out.println("Author's Name:  " + books.get(location).getAuthor());   
+   System.out.println("Copyright:   " + books.get(location).getCopyright());   
+   System.out.println("Price:          " + books.get(location).getPrice());   
+   System.out.println("Genre:   " + books.get(location).getGenre() + "\n");
+ 
+  }
+  
+  
+    // This grabs the numbers from the bingo.in file
+  
+  private static int fillCard(String[] list)
+  {
+          //post : List is initialized with all strings from file.
+
+          String filename, stateInput;
+          int i = 0, numItems = 0;
+          try  {
+                Scanner stdin = new Scanner(System.in);
+                stdin = new Scanner(new File("bingo.in"));
+
+                while ((stdin.hasNext()) && (i < list.length))
+                {
+                        stateInput = stdin.nextLine();
+                        list[i] = stateInput;
+                        i++;
+                }
+                numItems = i;
+          }
+          catch (IOException e)  {
+                System.out.println(e.getMessage());
+          }
+          return numItems;
+   }
+   
+   
+   
+        private static int Initialize (String[] list)
+        {
+          //post : List is initialized with all strings from file.
+
+          String filename, stateInput;
+          int i = 0, numItems = 0;
+          try  {
+                System.out.print("Input File : ");
+                Scanner stdin = new Scanner(System.in);
+                filename = stdin.nextLine();
+                stdin = new Scanner(new File(filename));
+
+                while ((stdin.hasNext()) && (i < list.length))
+                {
+                        stateInput = stdin.nextLine();
+                        System.out.println("S = " + stateInput);
+                        list[i] = stateInput;
+                        i++;
+                }
+                numItems = i;
+          }
+          catch (IOException e)  {
+                System.out.println(e.getMessage());
+          }
+          return numItems;
+        }
+        
+
+
+  // Finding which file to scan 
+  // Counting the number of books in the file
+  public static int countBooks(String[] list)
+  {
+    String fileName = "", stateInput;
+    int i = 0, numItems = 0;
+    try  {
+          System.out.print("\t  Filename : ");
+          Scanner stdin = new Scanner(System.in);
+          fileName = stdin.nextLine();
+          stdin = new Scanner(new File(fileName));
+            
+          while ((stdin.hasNext()) && (i < list.length))
+          {
+            stateInput = stdin.nextLine();
+            list[i] = stateInput;
+            i++;
+          }
+                numItems = i;
+          }
+          catch (IOException e)  {
+                System.out.println(e.getMessage());
+          }
+          return numItems;
+  }

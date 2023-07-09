@@ -1,0 +1,61 @@
+     1                                  ; NAME	     :	Syed Saadat
+     2                                  ; Assignment :  Program 2 - Adding Integers
+     3                                  ; Date	     :  10 - 6 - 21
+     4                                  
+     5                                  SECTION .txt
+     6                                  global _main
+     7                                  _main :
+     8                                  
+     9                                  ; a987 + a987
+    10 00000000 66B887A9                mov ax, 0a987h
+    11 00000004 6689C3                  mov bx, ax
+    12 00000007 6601D8                  add ax, bx
+    13                                  
+    14                                  ; abcd + ef01
+    15 0000000A 66B8CDAB                mov ax, 0abcdh
+    16 0000000E 66BB01EF                mov bx, 0ef01h
+    17 00000012 6601D8                  add ax, bx
+    18                                  
+    19                                  ; fafa + 0505
+    20 00000015 66B8FAFA                mov ax, 0fafah
+    21 00000019 66BB0505                mov bx, 0505h
+    22 0000001D 6601D8                  add ax, bx
+    23                                  
+    24                                  ; 80f0 + ff00
+    25 00000020 66B8F080                mov ax, 080f0h
+    26 00000024 66BB00FF                mov bx, 0ff00h
+    27 00000028 6601D8                  add ax, bx
+    28                                  
+    29                                  ; 2468 + db98
+    30 0000002B 66B86824                mov ax, 2468h
+    31 0000002F 66BB98DB                mov bx, 0db98h
+    32 00000033 6601D8                  add ax, bx
+    33                                  
+    34                                  ; 000f + 7ff1
+    35 00000036 66B80F00                mov ax, 000fh
+    36 0000003A 66BBF17F                mov bx, 7ff1h
+    37 0000003E 6601D8                  add ax, bx
+    38                                  
+    39                                  ; 1234 + 7654
+    40 00000041 66B83412                mov ax, 1234h
+    41 00000045 66BB5476                mov bx, 7654h
+    42 00000049 6601D8                  add ax, bx
+    43                                  
+    44                                  ; 0b0b + a11r
+    45 0000004C 66B80B0B                mov ax, 0b0bh
+    46 00000050 66BB110A                mov bx, 0a11h
+    47 00000054 6601D8                  add ax, bx
+    48                                  
+    49                                  ; 7654 + 789a
+    50 00000057 66B85476                mov ax, 7654h
+    51 0000005B 66BB9A78                mov bx, 789ah
+    52 0000005F 6601D8                  add ax, bx
+    53                                  
+    54                                  ; 8000 + 8000
+    55 00000062 66B80080                mov ax, 8000h
+    56 00000066 66BB0080                mov bx, 8000h
+    57 0000006A 6601D8                  add ax, bx
+    58                                  
+    59 0000006D B801000000              mov eax, 1
+    60 00000072 BB00000000              mov ebx, 0
+    61 00000077 CD80                    int 80h

@@ -1,0 +1,40 @@
+Syed Saadat
+Project 3
+
+
+          Software Development Method for Project 3
+          
+    (a) The program needs to convert a date entered from the user into a corrected date format with the day of the week
+    
+    (b) Input : The date entered in the format month day, year. The entered date cannot be case sensitive
+        Output : The program will give the correct date along with the day of the week for that date
+  
+    (c)                            Algorithm for ConvertDate Proj
+    
+                  1.      input : entered as a string this format --> month day, year
+                          output : give out date in this format --> dayOfWeek, month day, year
+                          
+                  2.      Conversion of the Date Entered
+                          
+                          J = century (ex: 19 in 1998)                        
+                          Use string class to find the first two numbers  
+                          
+                          K = year within century (ex: 98 in 1998)        
+                          Use string class to find the first two numbers
+                          
+                          m = month 
+                          Use string class to find where the month is located in the date collected
+                          
+                          date2 = day of the month 
+                          Use string class to find where the day is located in the date collected
+                          
+                          After finding those values, use this equation to find the day of the week :
+                          h = (date2 + 26(m + 1)/10 + K + K/4 + J/4 + 5J) % 7
+                          h will equal from 0 to 6 or Saturdat to Friday respectively
+                          
+                          Print out the converted date (dayOfWeek, month day, year)
+                          
+                          
+                          
+                          
+                        

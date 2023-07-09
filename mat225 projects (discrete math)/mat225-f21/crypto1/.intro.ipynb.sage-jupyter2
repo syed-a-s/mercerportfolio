@@ -1,0 +1,14 @@
+{"backend_state":"init","connection_file":"/tmp/xdg-runtime-user/jupyter/kernel-cb277537-2323-47a4-8c31-d0091451e6fe.json","kernel":"python3","kernel_error":"","kernel_state":"idle","kernel_usage":{"cpu":0,"memory":0},"metadata":{"language_info":{"codemirror_mode":{"name":"ipython","version":3},"file_extension":".py","mimetype":"text/x-python","name":"python","nbconvert_exporter":"python","pygments_lexer":"ipython3","version":"3.8.10"}},"trust":true,"type":"settings"}
+{"cell_type":"code","exec_count":0,"id":"8e75bd","input":"","pos":10,"type":"cell"}
+{"cell_type":"code","exec_count":13,"id":"2d4340","input":"plain = \"attackatdawn\"\nplain = list(map(StringToInteger, plain))","pos":1,"type":"cell"}
+{"cell_type":"code","exec_count":14,"id":"aa3adf","input":"cipher = list(map(CaesarShift, plain))","pos":2,"type":"cell"}
+{"cell_type":"code","exec_count":16,"id":"4ea068","input":"encoded = list(map(IntegerToString, cipher))","pos":3,"type":"cell"}
+{"cell_type":"code","exec_count":19,"id":"c478a9","input":"def StringToInteger(x):\n    return(ord(x)-97)\n\ndef IntegerToString(x):\n    return(chr(x+97))\n\ndef CaesarShift(p):\n    return ((p + 3) % 26)\n\ndef Decode(c):\n    return ((c - 3) % 26)","pos":0,"type":"cell"}
+{"cell_type":"code","exec_count":20,"id":"420431","input":"step1 = list(map(StringToInteger, encoded))\nstep2 = list(map(Decode, step1))\nresult = list(map(IntegerToString, step2))\nresult","output":{"0":{"data":{"text/plain":"['a', 't', 't', 'a', 'c', 'k', 'a', 't', 'd', 'a', 'w', 'n']"},"exec_count":20,"output_type":"execute_result"}},"pos":4,"type":"cell"}
+{"cell_type":"code","exec_count":21,"id":"de75a3","input":"''.join(result)","output":{"0":{"data":{"text/plain":"'attackatdawn'"},"exec_count":21,"output_type":"execute_result"}},"pos":5,"type":"cell"}
+{"cell_type":"code","exec_count":22,"id":"d7ea87","input":"def AffineCipher(p):\n    return ((15 * p + 3) % 26)","pos":6,"type":"cell"}
+{"cell_type":"code","exec_count":26,"id":"884fe9","input":"message = \"testatnoon\"\nstep1 = list(map(StringToInteger, message))\nstep2 = list(map(AffineCipher, step1))\nresult = list(map(IntegerToString, step2))\nresult","output":{"0":{"data":{"text/plain":"['c', 'l', 'n', 'c', 'd', 'c', 'q', 'f', 'f', 'q']"},"exec_count":26,"output_type":"execute_result"}},"pos":7,"type":"cell"}
+{"cell_type":"code","exec_count":27,"id":"993e40","input":"def AffineCipherDecode(c):\n    return ((7*(c - 3)) % 26)","pos":8,"type":"cell"}
+{"cell_type":"code","exec_count":32,"id":"3de653","input":"step1 = list(map(StringToInteger, result))\nstep2 = list(map(AffineCipherDecode, step1))\nresult = list(map(IntegerToString, step2))\nresult","output":{"0":{"data":{"text/plain":"['t', 'e', 's', 't', 'a', 't', 'n', 'o', 'o', 'n']"},"exec_count":32,"output_type":"execute_result"}},"pos":9,"type":"cell"}
+{"id":0,"time":1639260781133,"type":"user"}
+{"last_load":1639260782067,"type":"file"}

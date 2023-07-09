@@ -1,0 +1,83 @@
+     1                                  ; NAME          : Syed Saadat
+     2                                  ; Assignment    : Matrix Management
+     3                                  ; Date          : 11-1-21
+     4                                  ; Etc...        :
+     5                                  
+     6                                  ROWS: EQU 5
+     7                                  COLS: EQU 7
+     8                                  
+     9                                  SECTION .data
+    10 00000000 010002000300040005-     MyMatrix: 	dw	 1,  2,  3,  4,  5,  6,  7
+    11 00000009 0006000700         
+    12 0000000E 080009000A000B000C-     	    	dw	 8,  9, 10, 11, 12, 13, 14
+    13 00000017 000D000E00         
+    14 0000001C 0F0010001100120013-     		dw	15, 16, 17, 18, 19, 20, 21
+    15 00000025 0014001500         
+    16 0000002A 16001700180019001A-     		dw	22, 23, 24, 25, 26, 27, 28
+    17 00000033 001B001C00         
+    18 00000038 1D001E001F00200021-     		dw	29, 30, 31, 32, 33, 34, 35
+    19 00000041 0022002300         
+    20 00000046 0000                    saveECX: dw 0
+    21 00000048 00000000                saveTopCol: dd 0
+    22                                  
+    23                                  SECTION .bss
+    24 00000000 <res 0000000A>          RowSums: RESW ROWS
+    25 0000000A <res 0000000E>          ColSums: RESW COLS
+    26 00000018 <res 00000002>          Sum:     RESW 1
+    27                                  
+    28                                  SECTION .text
+    29                                  global _main
+    30                                  _main:
+    31                                  
+    32                                  ; Storing the sum of each row
+    33 00000000 BA[00000000]            mov edx, RowSums
+    34 00000005 31DB                    xor ebx, ebx
+    35 00000007 B905000000              mov ecx, ROWS
+    36                                  outer:
+    37 0000000C 890D[46000000]                  mov [saveECX], ecx
+    38 00000012 B907000000                      mov ecx, COLS
+    39                                  
+    40                                          inner:
+    41 00000017 668B83[00000000]                        mov ax, [MyMatrix+ebx]
+    42 0000001E 83C302                                  add ebx, 2
+    43 00000021 660102                                  add [edx], ax
+    44 00000024 E2F1                                    loop inner
+    45                                  
+    46 00000026 83C202                          add edx, 2
+    47 00000029 8B0D[46000000]                  mov ecx, [saveECX]
+    48 0000002F E2DB                            loop outer
+    49                                  
+    50                                  ; storing the sum of each column
+    51 00000031 BA[0A000000]            mov edx, ColSums
+    52 00000036 B907000000              mov ecx, COLS
+    53                                  outer1:
+    54 0000003B BB[00000000]            	mov ebx, MyMatrix
+    55 00000040 890D[46000000]          	mov [saveECX], ecx
+    56 00000046 B905000000              	mov ecx, ROWS
+    57                                  
+    58                                  	inner1:
+    59 0000004B 668B03                  		mov ax, [ebx]
+    60 0000004E 83C30E                  		add ebx, 2*COLS
+    61 00000051 660102                  		add [edx], ax
+    62 00000054 E2F5                    		loop inner1
+    63                                  
+    64 00000056 891D[00000000]          	mov [MyMatrix], ebx
+    65 0000005C 83C302                  	add ebx, 2
+    66 0000005F 83C202                  	add edx, 2
+    67 00000062 8B0D[46000000]          	mov ecx, [saveECX]
+    68 00000068 E2D1                    	loop outer1
+    69                                  
+    70                                  ; finding the grand sum
+    71 0000006A BA[18000000]            mov edx, Sum
+    72 0000006F BB[00000000]            mov ebx, MyMatrix
+    73 00000074 B923000000              mov ecx, 35
+    74                                  outer2:
+    75 00000079 668B03                  	mov ax, [ebx]
+    76 0000007C 660102                  	add [edx], ax
+    77 0000007F 83C302                  	add ebx, 2
+    78 00000082 E2F5                    	loop outer2
+    79                                  
+    80                                  ; Normal termination code
+    81 00000084 B801000000              mov eax, 1
+    82 00000089 BB00000000              mov ebx, 0
+    83 0000008E CD80                    int 80h

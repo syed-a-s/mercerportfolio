@@ -1,0 +1,56 @@
+Author : Syed Saadat
+Proj   : Dijkstra's Algorithm 
+Date   : May 6th, 2021
+
+Create a preliminary analysis & design with problem description, specification, client algorithm,
+and outline of the Graph class. Discuss the data structures used to build the graph. Also include
+a short, sample input and output file different from the one shown with this assignment, and be
+sure you explain the logic of Dijkstra’s algorithm very clearly. Name this file README and store in
+your project directory.
+
+      Goal
+      
+            - The program needs to use a greedy algorithm to find the shortest path from the starting point to every other vertex 
+            
+      Graph Class
+      
+            - The graph class was implemented using an adjacency matrix. However, instead of an array of bools, it is just a regular multidimensional array. The graph is built by adding 
+              both vertices and edges at the correct time with the help of using a HashTable. This is HashTable is implemented differently from what I have seen before. Instead of an array, 
+              it is implemented using a List. This is the algorithm for that :
+              
+                      while you have origin, destination, and weight
+                            if the HashTable doesn't find the origin
+                                  add the origin as a vertex into the graph, add the origin into the hashtable too
+                            if the HashTable doesn't find the destination
+                                  add the destinatino as a vertex into the graph, add the destination into the hashtable too
+                            
+                            Then add an edge from the origin to the destination and add its corresponding weight
+                            
+               
+                            
+            
+      Client Algorithm for Dijkstra's 
+      
+            while there are unvisited vertices
+                Visit the unvisited vertex with the smallest known distance from start vertex(currentVertex)_
+                For each unvisited adjacent vertex from currentVertex
+                      Calculate the distance from start vertex
+                      If the distance is less than the known distance
+                          then update with the shorter distance to this vertex
+                          also update the previous vertex witht this vertex
+                      Find next vertex with minimum distance
+                      Set that to the current vertex
+                      and mark that vertex 
+            
+      Logic for Dijkstra's Algorithm 
+      
+            - The client can pick whicher vertex to start on. Set that vertex's weight to 0 and every other to infinity
+            - Find any neighbouring vertices to the starting vertex. If it's an unweighted graph, visit the vertex with the smaller value. If it's a digraph, visit 
+              the vertex with the smallest 
+            - Find the cost to travel to the smallest vertex from the start, and assign that to the visited vertex. Then go back to start if you need to visit any other
+              neighbours.
+            - Then visit the smallest node again, and compare all of the new current vertex's neighbours and calculate the distance from the beginning to the current vertex's weight
+                  - If you visit any nodes that you have replaced already, check the new distance from the current vertex and see if it's greater than the already found weight.
+                    If not, replace the old distance with the distance.
+                    
+            - Keep doing this until all the nodes have been visited and its corresponding weights have been updated. 

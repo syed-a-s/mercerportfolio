@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Collatz Conjecture Visualization</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="800" height="800"></canvas>
+    <div>
+      <label>Number of Sequences:</label>
+      <input type="number" id="input1" value="10"/>
+      <label>Sequences to Compare:</label>
+      <input type="number" id="input2" value="100"/>
+      <label>Angle:</label>
+      <input type="number" id="input3" value="8"/>
+      <button onclick="drawLines()">Draw Lines</button>
+    </div>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      const lineLength = 50;
+      let angle = 0;
+      let startX = canvas.width / 4;
+      let startY = canvas.height * (3 / 4);
+      let collatzSequences = [];
+      let minimumLines;
+      let sequencesToCompare;
+      let changeAngle; 
+
+      function countCollatzSequence(n) {
+        counter = 0;
+        
+        while(n != 1) {
+          if(n % 2 == 0)
+            n = n / 2;
+          else
+            n = n * 3 + 1;
+          counter++;
+        }
+
+        return counter;
+      }
+
+      function findLongestSequence(n) {
+        // fill up the first 10 slots with sequence lengths for 1 - 10
+        for(let i = 1; i <= minimumLines; i++) {
+          let newSeqNum = {sequenceLength: countCollatzSequence(i), num: i};
+          collatzSequences.push(newSeqNum);
+        }
+
+        // find longest sequence with the smallest number
+        for(let i = minimumLines + 1; i <= n; i++) {
+          let seqNum = {sequenceLength: countCollatzSequence(i), num: i};
+          replaceSmallestSequenceLength(seqNum);
+        }
+      }
+
+      function replaceSmallestSequenceLength(newSeqNum) {
+        let shortestSequenceIndex = 0;
+
+        // replace shortest length with new largest
+        for (let i = 0; i < collatzSequences.length; i++) {
+          if (collatzSequences[i].sequenceLength < collatzSequences[shortestSequenceIndex].sequenceLength) {
+            shortestSequenceIndex = i;
+          }
+        }
+
+        collatzSequences[shortestSequenceIndex] = newSeqNum;
+      }
+
+      function getRandomColor() {
+        return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+      }
+
+      function drawLine(startX, startY, angle, n, color) {
+        const scaledLength = lineLength * 0.25;
+        const scaledRadius = 2.5;
+        const endX = startX + scaledLength * Math.cos(angle);
+        const endY = startY + scaledLength * Math.sin(angle);
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(endX, endY);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.fill();
+        return [endX, endY];
+      }
+
+      async function collatzVisualization(n, startX, startY, color, delay) {
+        if (n === 1) {
+          const scaledRadius = 2.5;
+          ctx.beginPath();
+          ctx.arc(startX, startY, scaledRadius, 0, 2 * Math.PI);
+          ctx.fillStyle = color;
+          ctx.fill();
+          return;
+        }
+
+        if (n % 2 === 0) {
+          angle += changeAngle * (180 / Math.PI);
+        } else {
+          angle -= changeAngle * (180 / Math.PI);
+        }
+
+        const [endX, endY] = drawLine(startX, startY, angle, n, color);
+        await new Promise((resolve) => setTimeout(resolve, delay));
+
+        await collatzVisualization(
+          n % 2 === 0 ? n / 2 : 3 * n + 1,
+          endX,
+          endY,
+          color,
+          delay
+        );
+      }
+
+      async function drawLines() {
+        // set everything back to initialize state
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        collatzSequences = [];
+
+        // initialize attributes
+        const delay = 1; // in milliseconds
+        minimumLines = parseInt(document.getElementById("input1").value);
+        sequencesToCompare = parseInt(document.getElementById("input2").value);
+        changeAngle = parseInt(document.getElementById("input3").value);
+
+        console.log(minimumLines, sequencesToCompare, changeAngle);
+
+        findLongestSequence(sequencesToCompare);
+        const colors = Array.from({length: collatzSequences.length}, () =>
+          getRandomColor()
+        );
+
+        console.log(collatzSequences);
+
+        for (let i = 0; i < collatzSequences.length; i++) {
+          const n = collatzSequences[i].num;
+          const color = colors[i];
+          angle = 0;
+          await collatzVisualization(n, startX, startY, color, delay);
+        }
+      }
+    </script>
+  </body>
+</html>

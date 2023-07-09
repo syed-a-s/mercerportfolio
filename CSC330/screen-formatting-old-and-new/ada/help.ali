@@ -1,0 +1,65 @@
+V "GNAT Lib v11"
+M P W=b
+P ZX
+
+RN
+RV NO_IO
+RV NO_DEFAULT_INITIALIZATION
+
+U help%b		help.adb		61608633 NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.io_exceptions%s	a-ioexce.ads		a-ioexce.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+D ada.ads		20210728065506 76789da1 ada%s
+D a-except.ads		20210728065506 449c9b65 ada.exceptions%s
+D a-ioexce.ads		20210728065506 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20210728065506 119b8fb3 ada.streams%s
+D a-tags.ads		20210728065506 9eaa38c6 ada.tags%s
+D a-textio.ads		20210728065506 aef4d56d ada.text_io%s
+D a-unccon.ads		20210728065506 0e9b276f ada.unchecked_conversion%s
+D help.adb		20211113024318 2b344c3a help%b
+D interfac.ads		20210728065506 edec285f interfaces%s
+D i-cstrea.ads		20210728065506 e53d8b8e interfaces.c_streams%s
+D system.ads		20210728065506 a2da961d system%s
+D s-crtl.ads		20210728065506 0ebbdb71 system.crtl%s
+D s-exctab.ads		20210728065506 54135002 system.exception_table%s
+D s-ficobl.ads		20210728065506 078245e4 system.file_control_block%s
+D s-parame.ads		20210728065506 4752c4cb system.parameters%s
+D s-secsta.ads		20210728065506 9b3ab94b system.secondary_stack%s
+D s-soflin.ads		20210728065506 a7318a92 system.soft_links%s
+D s-stache.ads		20210728065506 a37c21ec system.stack_checking%s
+D s-stalib.ads		20210728065506 0f2d51ff system.standard_library%s
+D s-stoele.ads		20210728065506 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20210728065506 ed88f8fb system.storage_elements%b
+D s-traent.ads		20210728065506 26a8d361 system.traceback_entries%s
+D s-wchcon.ads		20210728065506 1b7d22d2 system.wch_con%s
+G a e
+G c Z b b [help standard 6 11 none]
+X 1 ada.ads
+16K9*Ada 20e8 8|1r6 2r5 3r6 4r5 8r15 15r5 15r48 18r15 19r9 28r9 31r5
+X 3 a-ioexce.ads
+18K13*IO_Exceptions 30e22 8|3w10 4r9
+X 6 a-textio.ads
+58K13*Text_IO 728e16 8|1w10 2r9 8r19 15r9 15r52 18r19 19r13 28r13 31r9
+65P9*File_Type 8|8r27
+67n23*In_File{67E9} 8|15r60
+115U14*Open 8|15s17
+116p7 File{65P9} 8|15r23
+117e7 Mode{67E9} 8|15r40
+118a7 Name{string} 8|15r69
+265U14*New_Line 8|23s9 31s17
+313V13*End_Of_File{boolean} 8|18s27
+379U14*Get 8|19s21
+379p19 File{65P9} 8|19r26
+379e37 Item{character} 8|19r43
+393U14*Put 8|22s9 28s21
+393e19 Item{character} 8|28r26
+X 8 help.adb
+6U11*help 6b11 32l5 32t9
+8p5 In_File{6|65P9} 15m31 15r31 18r39 19r34
+9e5 value{character} 19m51 21r30 22r13
+10a5 string_array(character) 21m9 28r34
+11i5 pos{integer} 17m5 20m9 20r16 21r22 27r17
+27i9 i{integer} 28r47
+
